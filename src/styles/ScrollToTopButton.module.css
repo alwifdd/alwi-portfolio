@@ -1,0 +1,51 @@
+/* src/styles/ScrollToTopButton.module.css */
+
+.scrollToTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  z-index: 999;
+
+  /* Efek untuk muncul & hilang */
+  opacity: 0;
+  transform: translateY(20px);
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+
+  /* Ini adalah lapisan luar yang akan diisi oleh progress gradient */
+  padding: 4px;
+  background-clip: content-box; /* Pastikan background hanya di dalam padding */
+}
+
+.scrollToTopBtn.visible {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+/* Lingkaran dalam untuk efek liquid glass */
+.innerCircle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Efek Liquid Glass */
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* Untuk Safari */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.arrowIcon {
+  font-size: 20px;
+  color: #333;
+}

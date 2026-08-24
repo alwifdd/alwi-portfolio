@@ -1,0 +1,1121 @@
+/* src/styles/ExperienceSection.module.css */
+
+.experienceSection {
+  position: relative;
+
+  width: 100%;
+
+  padding: 120px 0 125px;
+
+  background: #ffffff;
+
+  overflow: hidden;
+}
+
+/* ================================================= */
+/* HEADING                                           */
+/* ================================================= */
+
+.sectionHeading {
+  width: 100%;
+  max-width: 720px;
+
+  margin: 0 auto 60px;
+
+  text-align: center;
+}
+
+.sectionEyebrow {
+  display: inline-block;
+
+  margin-bottom: 10px;
+
+  color: var(--primary-color);
+
+  font-size: 0.78rem;
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+}
+
+.sectionTitle {
+  margin: 0;
+
+  color: var(--text-color);
+
+  font-size: clamp(2.8rem, 5vw, 4rem);
+
+  font-weight: 700;
+
+  line-height: 1.05;
+
+  letter-spacing: -0.055em;
+}
+
+.sectionDescription {
+  max-width: 580px;
+
+  margin: 18px auto 0;
+
+  color: var(--secondary-color);
+
+  font-size: 1rem;
+
+  line-height: 1.75;
+}
+
+/* ================================================= */
+/* WORKSPACE                                         */
+/* ================================================= */
+
+.experienceWorkspace {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+}
+
+/* ================================================= */
+/* DETAIL CARD                                       */
+/* ================================================= */
+
+.experienceDetailBox {
+  width: 100%;
+  max-width: 1000px;
+
+  min-height: 360px;
+
+  margin: 0 auto;
+
+  padding: 48px;
+
+  display: grid;
+
+  grid-template-columns:
+    190px
+    minmax(0, 1fr);
+
+  align-items: start;
+
+  gap: 48px;
+
+  background: #f7f8fa;
+
+  border: 1px solid rgba(0, 0, 0, 0.04);
+
+  border-radius: 30px;
+
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.055),
+    0 4px 12px rgba(0, 0, 0, 0.025);
+
+  text-align: left;
+
+  animation: experienceEnter 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes experienceEnter {
+  from {
+    opacity: 0;
+
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+/* ================================================= */
+/* DETAIL LOGO                                       */
+/* ================================================= */
+
+.detailLogoColumn {
+  width: 100%;
+
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.detailLogo {
+  width: 175px;
+  height: 175px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: #ffffff;
+
+  border-radius: 26px;
+
+  overflow: hidden;
+
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.055);
+}
+
+.detailLogo img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+.logoPlaceholder {
+  color: var(--primary-color);
+
+  font-size: 4rem;
+  font-weight: 800;
+}
+
+/* ================================================= */
+/* DETAIL CONTENT                                    */
+/* ================================================= */
+
+.detailContent {
+  width: 100%;
+  min-width: 0;
+
+  display: block;
+}
+
+.detailTop {
+  position: relative;
+
+  width: 100%;
+
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.detailTop > div {
+  min-width: 0;
+}
+
+.experienceType {
+  display: inline-flex;
+
+  align-items: center;
+
+  margin-bottom: 14px;
+
+  padding: 6px 12px;
+
+  background: rgba(0, 123, 255, 0.08);
+
+  border-radius: 999px;
+
+  color: var(--primary-color);
+
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.detailTitle {
+  margin: 0 0 8px;
+
+  color: var(--text-color);
+
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+
+  font-weight: 700;
+
+  line-height: 1.14;
+
+  letter-spacing: -0.04em;
+}
+
+.companyName {
+  margin: 0 0 5px;
+
+  color: var(--text-color);
+
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.period {
+  margin: 0;
+
+  color: var(--secondary-color);
+
+  font-size: 0.88rem;
+}
+
+/* ================================================= */
+/* COMPANY LINK                                      */
+/* ================================================= */
+
+.companyLink {
+  width: 42px;
+  height: 42px;
+
+  flex: 0 0 42px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: var(--primary-color);
+
+  background: #ffffff;
+
+  border: 1px solid rgba(0, 123, 255, 0.12);
+
+  border-radius: 50%;
+
+  font-size: 1.05rem;
+
+  text-decoration: none;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.companyLink:hover {
+  color: #ffffff;
+
+  background: var(--primary-color);
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 24px rgba(0, 123, 255, 0.16);
+
+  text-decoration: none;
+}
+
+/* ================================================= */
+/* DESCRIPTION                                       */
+/* ================================================= */
+
+.descriptionList {
+  width: 100%;
+
+  margin: 28px 0 0;
+
+  padding: 0;
+
+  display: block;
+
+  list-style: none;
+}
+
+.descriptionList li {
+  position: relative;
+
+  width: 100%;
+
+  margin: 0 0 13px;
+
+  padding-left: 22px;
+
+  color: #555d67;
+
+  font-size: 0.95rem;
+
+  line-height: 1.7;
+}
+
+.descriptionList li:last-child {
+  margin-bottom: 0;
+}
+
+.descriptionList li::before {
+  content: "";
+
+  position: absolute;
+
+  left: 1px;
+  top: 0.72em;
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: var(--primary-color);
+}
+
+/* ================================================= */
+/* DESKTOP TIMELINE                                  */
+/* ================================================= */
+
+.timelineArea {
+  position: relative;
+
+  width: 100%;
+
+  margin-top: 72px;
+
+  padding: 0 58px;
+}
+
+.timelineViewport {
+  width: 100%;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-behavior: smooth;
+
+  scrollbar-width: none;
+
+  overscroll-behavior-x: contain;
+}
+
+.timelineViewport::-webkit-scrollbar {
+  display: none;
+}
+
+.timelineTrack {
+  position: relative;
+
+  width: max-content;
+
+  min-width: 100%;
+
+  display: flex;
+
+  flex-direction: row;
+
+  flex-wrap: nowrap;
+
+  align-items: flex-start;
+
+  justify-content: center;
+
+  gap: 28px;
+
+  padding: 10px 24px 16px;
+}
+
+.timelineTrack::before {
+  content: "";
+
+  position: absolute;
+
+  top: 18px;
+
+  left: 7%;
+  right: 7%;
+
+  height: 2px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 199, 0, 0.5);
+
+  z-index: 0;
+}
+
+/* ================================================= */
+/* TIMELINE ITEM                                     */
+/* ================================================= */
+
+.timelineItem {
+  appearance: none;
+
+  position: relative;
+
+  z-index: 1;
+
+  width: 125px;
+
+  flex: 0 0 125px;
+
+  margin: 0;
+
+  padding: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  background: transparent;
+
+  border: none;
+
+  color: inherit;
+
+  font: inherit;
+
+  text-align: center;
+
+  cursor: pointer;
+}
+
+/* ================================================= */
+/* DOT                                               */
+/* ================================================= */
+
+.timelineDot {
+  width: 12px;
+  height: 12px;
+
+  flex: 0 0 12px;
+
+  margin: 3px 0 20px;
+
+  border: 3px solid #ffffff;
+
+  border-radius: 50%;
+
+  background: #aab0b7;
+
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+
+  transition:
+    width 0.3s ease,
+    height 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.timelineItem.active .timelineDot {
+  width: 18px;
+  height: 18px;
+
+  flex-basis: 18px;
+
+  margin-top: 0;
+
+  margin-bottom: 17px;
+
+  background: #ffc700;
+
+  box-shadow: 0 0 0 5px rgba(255, 199, 0, 0.15);
+}
+
+/* ================================================= */
+/* TIMELINE LOGO                                     */
+/* ================================================= */
+
+.companyLogoWrapper {
+  width: 68px;
+  height: 68px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 7px;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(0, 0, 0, 0.05);
+
+  border-radius: 50%;
+
+  overflow: hidden;
+
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.055);
+
+  transition:
+    transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.companyLogoWrapper img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  border-radius: 50%;
+
+  filter: grayscale(100%);
+
+  opacity: 0.55;
+
+  transition:
+    filter 0.3s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.timelineItem:hover .companyLogoWrapper {
+  transform: translateY(-3px);
+}
+
+.timelineItem.active .companyLogoWrapper {
+  transform: translateY(-2px) scale(1.1);
+
+  border-color: rgba(0, 123, 255, 0.2);
+
+  box-shadow: 0 14px 32px rgba(0, 123, 255, 0.12);
+}
+
+.timelineItem.active .companyLogoWrapper img {
+  filter: grayscale(0%);
+
+  opacity: 1;
+
+  transform: scale(0.92);
+}
+
+/* ================================================= */
+/* TIMELINE TEXT                                     */
+/* ================================================= */
+
+.timelineDate {
+  margin-top: 12px;
+
+  color: var(--secondary-color);
+
+  font-size: 0.7rem;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.timelineCompany {
+  display: block;
+
+  width: 110px;
+
+  margin-top: 5px;
+
+  overflow: hidden;
+
+  color: #969ba2;
+
+  font-size: 0.65rem;
+
+  line-height: 1.35;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+}
+
+.timelineItem.active .timelineDate {
+  color: var(--primary-color);
+}
+
+.timelineItem.active .timelineCompany {
+  color: var(--text-color);
+
+  font-weight: 600;
+}
+
+.smallLogoPlaceholder {
+  color: var(--primary-color);
+
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+/* ================================================= */
+/* DESKTOP ARROWS                                    */
+/* ================================================= */
+
+.timelineArrow {
+  appearance: none;
+
+  position: absolute;
+
+  top: 58px;
+
+  width: 42px;
+  height: 42px;
+
+  padding: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  z-index: 10;
+
+  color: var(--primary-color);
+
+  background: #ffffff;
+
+  border: 1px solid rgba(0, 123, 255, 0.12);
+
+  border-radius: 50%;
+
+  font-size: 1.2rem;
+
+  cursor: pointer;
+
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.timelineArrow:hover:not(:disabled) {
+  color: #ffffff;
+
+  background: var(--primary-color);
+
+  transform: scale(1.08);
+}
+
+.timelineArrow:disabled {
+  opacity: 0.22;
+
+  cursor: default;
+
+  pointer-events: none;
+}
+
+.timelineArrowLeft {
+  left: 0;
+}
+
+.timelineArrowRight {
+  right: 0;
+}
+
+/* ================================================= */
+/* TABLET                                            */
+/* ================================================= */
+
+@media (max-width: 992px) {
+  .experienceSection {
+    padding: 100px 0 105px;
+  }
+
+  .experienceDetailBox {
+    grid-template-columns:
+      150px
+      minmax(0, 1fr);
+
+    gap: 34px;
+
+    min-height: 0;
+
+    padding: 38px;
+  }
+
+  .detailLogo {
+    width: 145px;
+    height: 145px;
+  }
+
+  .timelineTrack {
+    gap: 22px;
+  }
+}
+
+/* ================================================= */
+/* MOBILE                                            */
+/* ================================================= */
+
+@media (max-width: 768px) {
+  .experienceSection {
+    padding: 80px 0 85px;
+  }
+
+  .sectionHeading {
+    max-width: 380px;
+
+    margin-bottom: 42px;
+
+    padding: 0 8px;
+  }
+
+  .sectionEyebrow {
+    font-size: 0.68rem;
+  }
+
+  .sectionTitle {
+    font-size: 2.4rem;
+  }
+
+  .sectionDescription {
+    max-width: 330px;
+
+    font-size: 0.84rem;
+
+    line-height: 1.65;
+  }
+
+  /*
+    MOBILE:
+    TIMELINE KIRI + CARD KANAN
+  */
+
+  .experienceWorkspace {
+    display: grid;
+
+    grid-template-columns:
+      82px
+      minmax(0, 1fr);
+
+    grid-template-areas: "timeline detail";
+
+    align-items: start;
+
+    gap: 14px;
+  }
+
+  /* ================================================= */
+  /* MOBILE DETAIL                                     */
+  /* ================================================= */
+
+  .experienceDetailBox {
+    grid-area: detail;
+
+    width: 100%;
+
+    min-height: 0;
+
+    margin: 0;
+
+    padding: 22px 17px 24px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 17px;
+
+    border-radius: 22px;
+  }
+
+  .detailLogo {
+    width: 82px;
+    height: 82px;
+
+    padding: 11px;
+
+    border-radius: 18px;
+  }
+
+  .detailContent {
+    width: 100%;
+  }
+
+  .detailTop {
+    display: block;
+
+    text-align: center;
+  }
+
+  .detailTop > div {
+    width: 100%;
+  }
+
+  .experienceType {
+    margin-bottom: 10px;
+
+    padding: 5px 9px;
+
+    font-size: 0.61rem;
+  }
+
+  .detailTitle {
+    margin-bottom: 7px;
+
+    font-size: 1.22rem;
+
+    line-height: 1.16;
+  }
+
+  .companyName {
+    font-size: 0.82rem;
+  }
+
+  .period {
+    font-size: 0.72rem;
+  }
+
+  .companyLink {
+    position: absolute;
+
+    top: 14px;
+    right: 14px;
+
+    width: 32px;
+    height: 32px;
+
+    font-size: 0.86rem;
+  }
+
+  .descriptionList {
+    margin-top: 20px;
+  }
+
+  .descriptionList li {
+    margin-bottom: 10px;
+
+    padding-left: 17px;
+
+    font-size: 0.75rem;
+
+    line-height: 1.58;
+  }
+
+  .descriptionList li::before {
+    width: 5px;
+    height: 5px;
+
+    top: 0.68em;
+  }
+
+  /* ================================================= */
+  /* MOBILE VERTICAL TIMELINE                          */
+  /* ================================================= */
+
+  .timelineArea {
+    grid-area: timeline;
+
+    position: sticky;
+
+    top: 16px;
+
+    width: 82px;
+
+    height: min(62svh, 520px);
+
+    margin: 0;
+
+    padding: 0;
+
+    align-self: start;
+  }
+
+  /*
+    Fade atas bawah memberi tanda
+    bahwa timeline bisa di-scroll.
+  */
+
+  .timelineArea::before,
+  .timelineArea::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    width: 100%;
+    height: 30px;
+
+    z-index: 8;
+
+    pointer-events: none;
+  }
+
+  .timelineArea::before {
+    top: 0;
+
+    background: linear-gradient(to bottom, #ffffff, transparent);
+  }
+
+  .timelineArea::after {
+    bottom: 0;
+
+    background: linear-gradient(to top, #ffffff, transparent);
+  }
+
+  .timelineViewport {
+    width: 100%;
+    height: 100%;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    padding: 12px 0;
+
+    scroll-behavior: smooth;
+
+    scrollbar-width: none;
+  }
+
+  .timelineTrack {
+    width: 100%;
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    gap: 22px;
+
+    padding: 15px 0 18px;
+  }
+
+  /*
+    Horizontal line desktop
+    berubah jadi vertical line.
+  */
+
+  .timelineTrack::before {
+    top: 28px;
+    bottom: 28px;
+
+    left: 50%;
+    right: auto;
+
+    width: 2px;
+    height: auto;
+
+    transform: translateX(-50%);
+  }
+
+  .timelineItem {
+    width: 72px;
+
+    flex: 0 0 auto;
+
+    padding: 2px 0 4px;
+  }
+
+  .timelineDot {
+    width: 10px;
+    height: 10px;
+
+    flex-basis: 10px;
+
+    margin: 0 0 10px;
+
+    border-width: 2px;
+  }
+
+  .timelineItem.active .timelineDot {
+    width: 15px;
+    height: 15px;
+
+    flex-basis: 15px;
+
+    margin: -2px 0 8px;
+  }
+
+  .companyLogoWrapper {
+    width: 48px;
+    height: 48px;
+
+    padding: 5px;
+  }
+
+  .timelineItem.active .companyLogoWrapper {
+    transform: scale(1.08);
+  }
+
+  .timelineDate {
+    margin-top: 7px;
+
+    font-size: 0.6rem;
+  }
+
+  /*
+    Company sudah muncul di card,
+    jadi rail cukup logo + tahun.
+  */
+
+  .timelineCompany {
+    display: none;
+  }
+
+  /*
+    Di mobile scroll pakai jari,
+    tidak perlu arrow.
+  */
+
+  .timelineArrow {
+    display: none;
+  }
+}
+
+/* ================================================= */
+/* VERY SMALL MOBILE                                 */
+/* ================================================= */
+
+@media (max-width: 380px) {
+  .experienceWorkspace {
+    grid-template-columns:
+      72px
+      minmax(0, 1fr);
+
+    gap: 10px;
+  }
+
+  .timelineArea {
+    width: 72px;
+  }
+
+  .timelineItem {
+    width: 64px;
+  }
+
+  .companyLogoWrapper {
+    width: 44px;
+    height: 44px;
+  }
+
+  .experienceDetailBox {
+    padding: 20px 14px 22px;
+  }
+
+  .detailLogo {
+    width: 72px;
+    height: 72px;
+  }
+
+  .detailTitle {
+    font-size: 1.08rem;
+  }
+
+  .descriptionList li {
+    font-size: 0.7rem;
+  }
+}
+
+/* ================================================= */
+/* REDUCED MOTION                                    */
+/* ================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .experienceDetailBox {
+    animation: none;
+  }
+
+  .timelineViewport {
+    scroll-behavior: auto;
+  }
+
+  .companyLogoWrapper,
+  .companyLogoWrapper img,
+  .timelineDot,
+  .timelineArrow {
+    transition: none;
+  }
+}

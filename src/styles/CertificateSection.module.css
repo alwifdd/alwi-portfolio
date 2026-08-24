@@ -1,0 +1,141 @@
+/* src/styles/CertificateSection.module.css */
+
+.certificateSection {
+  background-color: var(--light-bg-color); /* Latar belakang putih */
+  padding: 80px 0;
+  text-align: center;
+  /* Pattern bisa ditambahkan di sini jika diinginkan (seperti HeroSection) */
+  background: radial-gradient(
+      ellipse at center,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.1) 70%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='rgba(0,0,0,0.02)'%3E%3Cpath d='M0 0h1v40H0V0zm39 0h1v40h-1V0zM0 0h40v1H0V0zm0 39h40v1H0V39z' /%3E%3C/g%3E%3C/svg%3E")
+      repeat,
+    var(--light-bg-color);
+  background-size: cover, 40px 40px, auto;
+  background-position: center center, 0 0, 0 0;
+  background-attachment: fixed, scroll, scroll;
+}
+
+.sectionTitle {
+  font-size: 3em;
+  font-weight: 700;
+  margin-bottom: 60px;
+  color: var(--text-color);
+  letter-spacing: -0.02em;
+}
+
+.certificatesGrid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(300px, 1fr)
+  ); /* 3 kolom di desktop */
+  gap: 30px; /* Jarak antar kartu sertifikat */
+  margin-bottom: 60px;
+  justify-items: center; /* Pusatkan item di grid */
+  max-width: 1200px; /* Batasi lebar grid */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.certificateCard {
+  background-color: var(--light-bg-color);
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer; /* Menunjukkan bahwa kartu bisa diklik */
+  max-width: 100%;
+}
+
+.certificateCard:hover {
+  transform: translateY(-5px); /* Efek angkat saat hover */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Ganti blok .certificateThumbnail Anda dengan yang ini */
+
+.certificateThumbnail {
+  width: 100%;
+  height: 200px;
+
+  /* UBAH DARI 'cover' MENJADI 'contain' */
+  object-fit: contain;
+
+  border-bottom: 1px solid #eee;
+
+  /* Tambahkan background lembut untuk mengisi ruang kosong */
+  background-color: #f9f9f9;
+  padding: 8px; /* Tambahkan sedikit padding agar tidak menempel */
+}
+
+.cardInfo {
+  padding: 15px;
+  text-align: left;
+}
+
+.certificateName {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: var(--text-color);
+  min-height: 2.2em; /* Minimal tinggi agar nama tidak bergeser */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Batasi 2 baris */
+  -webkit-box-orient: vertical;
+}
+
+.certificateIssuer {
+  font-size: 0.9em;
+  color: var(--secondary-color);
+}
+
+.noCertificates {
+  font-size: 1.2em;
+  color: var(--secondary-color);
+  margin-top: 30px;
+  grid-column: 1 / -1; /* Agar pesan di tengah grid */
+}
+
+.seeAllButton {
+  margin-top: 30px;
+  display: inline-block;
+}
+
+/* Responsif Mobile */
+/* Ganti seluruh blok @media Anda dengan yang ini */
+
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 2em;
+    margin-bottom: 40px;
+  }
+  .certificatesGrid {
+    grid-template-columns: 1fr; /* 1 kolom di mobile */
+    gap: 20px;
+  }
+
+  /* --- PERBAIKAN UTAMA DI SINI --- */
+  .certificateThumbnail {
+    height: 180px;
+    object-fit: contain; /* <-- Tambahkan ini */
+    background-color: #f9f9f9; /* <-- Tambahkan ini */
+    padding: 8px; /* <-- Tambahkan ini */
+  }
+
+  .cardInfo {
+    padding: 10px;
+  }
+  .certificateName {
+    font-size: 1em;
+    min-height: auto;
+  }
+  .certificateIssuer {
+    font-size: 0.8em;
+  }
+}

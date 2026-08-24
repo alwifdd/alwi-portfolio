@@ -1,0 +1,193 @@
+/* ================================================= */
+/* Header/Navbar Final dengan Posisi Fixed           */
+/* ================================================= */
+.certificateHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  /* NAVBAR LEBIH TINGGI */
+  padding: 30px 30px; /* 30px atas-bawah, 30px kiri-kanan */
+
+  background-color: var(--light-bg-color);
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  align-items: center;
+}
+
+/* Link di dalam navbar */
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--primary-color);
+  text-decoration: none; /* Menghilangkan underline bawaan */
+  font-weight: 600;
+  font-size: 1.3em;
+  transition: opacity 0.2s ease;
+}
+
+/* HOVER SUPER LEMBUT, TANPA UNDERLINE */
+.backLink:hover {
+  opacity: 0.7;
+  text-decoration: none; /* <-- INI PERBAIKANNYA */
+}
+
+.backArrow {
+  font-size: 1.8em;
+  line-height: 1;
+}
+
+.backText {
+  /* Tidak perlu style khusus */
+}
+
+/* ================================================= */
+/* Konten Utama Halaman                              */
+/* ================================================= */
+.certificatesPage {
+  /* Beri padding atas lebih banyak agar tidak tertutup header yang lebih besar */
+  padding-top: 125px;
+  padding-bottom: 80px;
+
+  background-color: var(--bg-color);
+  text-align: left;
+  background: var(--bg-color);
+}
+
+/* Judul Utama */
+.pageTitle {
+  font-size: 3em;
+  font-weight: 700;
+  margin-bottom: 60px;
+  color: var(--text-color);
+  letter-spacing: -0.02em;
+  text-align: center;
+
+  /* BERI JARAK DARI ATAS AGAR TIDAK MEPET */
+  margin-top: 40px;
+}
+
+/* --- Sisa kode sama --- */
+
+.issuerGroup {
+  margin-bottom: 80px;
+  text-align: left;
+}
+
+.issuerTitle {
+  font-size: 2.2em;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: var(--text-color);
+  padding-left: 20px;
+}
+
+.certificatesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+  justify-items: center;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.certificateCard {
+  background-color: var(--light-bg-color);
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  max-width: 100%;
+}
+
+.certificateCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.certificateThumbnail {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+.cardInfo {
+  padding: 15px;
+  text-align: left;
+}
+
+.certificateName {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: var(--text-color);
+  min-height: 2.2em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.certificateIssuer {
+  font-size: 0.9em;
+  color: var(--secondary-color);
+}
+
+.noResults {
+  font-size: 1.2em;
+  color: var(--secondary-color);
+  margin-top: 30px;
+  grid-column: 1 / -1;
+}
+
+/* Responsif Mobile */
+@media (max-width: 768px) {
+  .certificateHeader {
+    padding: 25px 20px;
+  }
+  .backLink {
+    font-size: 1em;
+  }
+  .certificatesPage {
+    padding-top: 110px;
+    padding-bottom: 60px;
+  }
+  .pageTitle {
+    font-size: 2em;
+    margin-bottom: 40px;
+    margin-top: 20px;
+  }
+  .issuerGroup {
+    margin-bottom: 50px;
+  }
+  .issuerTitle {
+    font-size: 1.8em;
+    padding-left: 0;
+    text-align: center;
+  }
+  .certificatesGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .certificateThumbnail {
+    height: 180px;
+  }
+  .cardInfo {
+    padding: 10px;
+  }
+  .certificateName {
+    font-size: 1em;
+    min-height: auto;
+  }
+  .certificateIssuer {
+    font-size: 0.8em;
+  }
+}

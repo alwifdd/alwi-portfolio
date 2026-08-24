@@ -1,0 +1,582 @@
+/* src/styles/HeroSection.module.css */
+
+/* ================================================= */
+/* HERO                                              */
+/* ================================================= */
+
+.heroSection {
+  position: relative;
+
+  width: 100%;
+  min-height: 100svh;
+
+  box-sizing: border-box;
+
+  padding: 145px 20px 90px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.15) 68%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='rgba(0,0,0,0.02)'%3E%3Cpath d='M0 0h1v40H0V0zm39 0h1v40h-1V0zM0 0h40v1H0V0zm0 39h40v1H0V39z' /%3E%3C/g%3E%3C/svg%3E")
+      repeat,
+    var(--light-bg-color);
+
+  background-size:
+    cover,
+    40px 40px,
+    auto;
+
+  background-position:
+    center center,
+    0 0,
+    0 0;
+}
+
+/* ================================================= */
+/* HERO CONTENT                                      */
+/* ================================================= */
+
+.heroContent {
+  position: relative;
+
+  z-index: 3;
+
+  width: 100%;
+  max-width: 920px;
+
+  /*
+    Naik sedikit secara visual
+    supaya balance dengan header.
+  */
+  transform: translateY(-25px);
+}
+
+/* ================================================= */
+/* TITLE                                             */
+/* ================================================= */
+
+.heroTitle {
+  position: relative;
+
+  margin: 30px 0 24px;
+
+  font-size: clamp(3.8rem, 6vw, 5.6rem);
+  font-weight: 700;
+
+  line-height: 1;
+
+  letter-spacing: -0.055em;
+
+  color: var(--text-color);
+
+  transition:
+    transform 0.35s ease,
+    letter-spacing 0.35s ease;
+}
+
+.alwiText {
+  display: inline-block;
+
+  transition:
+    color 0.35s ease,
+    transform 0.35s ease,
+    text-shadow 0.35s ease;
+}
+
+.heroTitle:hover {
+  transform: scale(1.025);
+}
+
+.heroTitle:hover .alwiText {
+  color: var(--primary-color);
+
+  transform: scale(1.05);
+
+  text-shadow: 0 10px 30px rgba(0, 123, 255, 0.14);
+}
+
+/* ================================================= */
+/* DESCRIPTION                                       */
+/* ================================================= */
+
+.heroDescription {
+  position: relative;
+
+  z-index: 3;
+
+  max-width: 720px;
+
+  margin: 0 auto;
+
+  font-size: 1.15rem;
+  line-height: 1.8;
+
+  color: var(--secondary-color);
+}
+
+/* ================================================= */
+/* FRIENDLY MICROCOPY                                */
+/* ================================================= */
+
+.heroMicrocopy {
+  position: relative;
+
+  z-index: 3;
+
+  margin: 24px auto 0;
+
+  font-size: 0.93rem;
+  font-weight: 600;
+
+  letter-spacing: -0.015em;
+
+  color: var(--primary-color);
+}
+
+/* ================================================= */
+/* SCROLL BUTTON                                     */
+/* ================================================= */
+
+.scrollIndicator {
+  position: relative;
+
+  z-index: 5;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 22px;
+
+  text-decoration: none;
+
+  border-radius: 50%;
+}
+
+.scrollButton {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-size: 1.3rem;
+
+  color: var(--primary-color);
+
+  background: rgba(255, 255, 255, 0.72);
+
+  border: 1px solid rgba(0, 123, 255, 0.14);
+
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+
+  box-shadow:
+    0 10px 28px rgba(0, 123, 255, 0.1),
+    inset 0 0 14px rgba(255, 255, 255, 0.95);
+
+  animation: scrollFloat 1.8s ease-in-out infinite;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.scrollIndicator:hover {
+  text-decoration: none;
+}
+
+.scrollIndicator:hover .scrollButton {
+  background: rgba(255, 255, 255, 0.96);
+
+  border-color: rgba(0, 123, 255, 0.25);
+
+  box-shadow:
+    0 15px 38px rgba(0, 123, 255, 0.17),
+    inset 0 0 17px rgba(255, 255, 255, 1);
+}
+
+@keyframes scrollFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(7px);
+  }
+}
+
+/* ================================================= */
+/* LIQUID CURSOR                                     */
+/* ================================================= */
+
+.liquidCursor {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  transform: translate(-50%, -50%);
+
+  pointer-events: none;
+
+  z-index: 2;
+
+  opacity: 0;
+
+  background: radial-gradient(
+    circle at 28% 24%,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.4) 25%,
+    rgba(0, 123, 255, 0.13) 65%,
+    rgba(255, 199, 0, 0.08)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.9);
+
+  backdrop-filter: blur(3px) saturate(160%);
+  -webkit-backdrop-filter: blur(3px) saturate(160%);
+
+  box-shadow:
+    inset 8px 8px 20px rgba(255, 255, 255, 0.8),
+    inset -6px -6px 16px rgba(0, 123, 255, 0.05),
+    0 12px 35px rgba(0, 123, 255, 0.09);
+
+  transition:
+    width 0.32s cubic-bezier(0.2, 0.8, 0.2, 1),
+    height 0.32s cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 0.2s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+
+  will-change: left, top, width, height;
+}
+
+.cursorVisible {
+  opacity: 1;
+}
+
+/* ================================================= */
+/* DEFAULT CURSOR                                    */
+/* ================================================= */
+
+.cursorDefault {
+  width: 42px;
+  height: 42px;
+}
+
+/* ================================================= */
+/* DESCRIPTION HOVER                                 */
+/* ================================================= */
+
+.cursorText {
+  width: 90px;
+  height: 90px;
+
+  background: radial-gradient(
+    circle at 28% 24%,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.38) 25%,
+    rgba(0, 123, 255, 0.1) 70%,
+    rgba(255, 255, 255, 0.18)
+  );
+
+  box-shadow:
+    inset 10px 10px 25px rgba(255, 255, 255, 0.85),
+    inset -8px -8px 22px rgba(0, 123, 255, 0.06),
+    0 15px 40px rgba(0, 123, 255, 0.1);
+}
+
+/* ================================================= */
+/* TITLE HOVER                                       */
+/* ================================================= */
+
+.cursorTitle {
+  width: 155px;
+  height: 155px;
+
+  background: radial-gradient(
+    circle at 25% 22%,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(255, 255, 255, 0.45) 20%,
+    rgba(0, 123, 255, 0.16) 53%,
+    rgba(255, 199, 0, 0.13) 78%,
+    rgba(255, 255, 255, 0.15) 100%
+  );
+
+  backdrop-filter: blur(5px) saturate(180%);
+  -webkit-backdrop-filter: blur(5px) saturate(180%);
+
+  box-shadow:
+    inset 16px 16px 35px rgba(255, 255, 255, 0.78),
+    inset -12px -12px 28px rgba(0, 123, 255, 0.08),
+    0 20px 55px rgba(0, 123, 255, 0.14);
+}
+
+/* ================================================= */
+/* DESKTOP CUSTOM CURSOR                             */
+/* ================================================= */
+
+@media (hover: hover) and (pointer: fine) {
+  .heroSection {
+    cursor: none;
+  }
+
+  .heroTitle,
+  .heroDescription {
+    cursor: none;
+  }
+
+  /*
+    Button scroll tetap pakai pointer normal
+    supaya terasa jelas bisa diklik.
+  */
+  .scrollIndicator {
+    cursor: pointer;
+  }
+}
+
+/* ================================================= */
+/* TABLET                                            */
+/* ================================================= */
+
+@media (max-width: 1024px) {
+  .heroSection {
+    min-height: 100svh;
+
+    padding: 130px 30px 65px;
+  }
+
+  .heroContent {
+    max-width: 780px;
+
+    transform: translateY(-10px);
+  }
+
+  .heroTitle {
+    font-size: clamp(3.4rem, 7vw, 4.6rem);
+  }
+
+  .heroDescription {
+    max-width: 650px;
+
+    font-size: 1.02rem;
+  }
+}
+
+/* ================================================= */
+/* MOBILE                                            */
+/* ================================================= */
+
+@media (max-width: 768px) {
+  .heroSection {
+    width: 100%;
+
+    min-height: 100svh;
+
+    padding: 120px 24px 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: auto;
+  }
+
+  .heroContent {
+    width: 100%;
+    max-width: 520px;
+
+    /*
+      Sedikit dinaikkan supaya secara visual
+      tidak terlalu turun karena header.
+    */
+    transform: translateY(-20px);
+  }
+
+  .heroTitle {
+    margin: 22px auto 18px;
+
+    font-size: clamp(2.75rem, 10vw, 3.4rem);
+
+    line-height: 1.02;
+
+    letter-spacing: -0.05em;
+  }
+
+  .heroDescription {
+    max-width: 500px;
+
+    margin: 0 auto;
+
+    font-size: 0.94rem;
+
+    line-height: 1.65;
+  }
+
+  .heroMicrocopy {
+    max-width: 360px;
+
+    margin: 18px auto 0;
+
+    font-size: 0.81rem;
+
+    line-height: 1.5;
+  }
+
+  .scrollIndicator {
+    margin-top: 18px;
+  }
+
+  .scrollButton {
+    width: 43px;
+    height: 43px;
+
+    font-size: 1.05rem;
+  }
+
+  .liquidCursor {
+    display: none;
+  }
+}
+
+/* ================================================= */
+/* SMALL MOBILE                                      */
+/* ================================================= */
+
+@media (max-width: 480px) {
+  .heroSection {
+    min-height: 100svh;
+
+    padding: 112px 20px 38px;
+  }
+
+  .heroContent {
+    width: 100%;
+
+    max-width: 360px;
+
+    transform: translateY(-14px);
+  }
+
+  .heroTitle {
+    margin: 20px auto 17px;
+
+    /*
+      Tetap satu baris di HP sekitar 390–430px,
+      tapi tidak sampai mentok kiri-kanan.
+    */
+    font-size: clamp(2.4rem, 10.8vw, 2.75rem);
+
+    line-height: 1.03;
+
+    letter-spacing: -0.05em;
+
+    white-space: nowrap;
+  }
+
+  .heroDescription {
+    max-width: 340px;
+
+    font-size: 0.87rem;
+
+    line-height: 1.62;
+  }
+
+  .heroMicrocopy {
+    max-width: 310px;
+
+    margin-top: 17px;
+
+    font-size: 0.76rem;
+  }
+
+  .scrollIndicator {
+    margin-top: 17px;
+  }
+
+  .scrollButton {
+    width: 41px;
+    height: 41px;
+
+    font-size: 1rem;
+  }
+}
+
+/* ================================================= */
+/* VERY SMALL MOBILE                                 */
+/* ================================================= */
+
+@media (max-width: 360px) {
+  .heroSection {
+    min-height: 100svh;
+
+    padding: 105px 17px 34px;
+  }
+
+  .heroContent {
+    max-width: 320px;
+
+    transform: translateY(-8px);
+  }
+
+  .heroTitle {
+    font-size: 2.15rem;
+  }
+
+  .heroDescription {
+    max-width: 305px;
+
+    font-size: 0.82rem;
+
+    line-height: 1.58;
+  }
+
+  .heroMicrocopy {
+    max-width: 280px;
+
+    font-size: 0.72rem;
+  }
+
+  .scrollButton {
+    width: 39px;
+    height: 39px;
+  }
+}
+/* ================================================= */
+/* REDUCED MOTION                                    */
+/* ================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .scrollButton {
+    animation: none;
+  }
+
+  .heroTitle,
+  .alwiText,
+  .liquidCursor {
+    transition: none;
+  }
+}

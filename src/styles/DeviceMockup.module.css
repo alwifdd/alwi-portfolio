@@ -1,0 +1,75 @@
+/* src/styles/DeviceMockup.module.css */
+
+.deviceMockup {
+  position: relative;
+  display: inline-block;
+  /* Animasi putar/posisi seperti di contoh */
+  /* transform: rotateY(-15deg) rotateX(5deg); */
+}
+
+.deviceFrame {
+  position: relative;
+  /* Atur ukuran frame di sini atau di komponen Image */
+}
+
+.deviceFrame .frameImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2)); /* Bayangan frame */
+}
+
+.screenContent {
+  position: absolute;
+  /* Sesuaikan posisi ini agar pas di dalam bingkai perangkat */
+  /* Contoh untuk mobile */
+  top: 6%; /* Margin atas */
+  left: 5.5%; /* Margin kiri */
+  width: 89%; /* Lebar layar */
+  height: 88%; /* Tinggi layar */
+  overflow: hidden; /* Penting untuk memotong gambar yang melebihi layar */
+  border-radius: 30px; /* Sudut layar HP */
+  background-color: black; /* Latar belakang layar jika screenshot tidak penuh */
+}
+
+.desktop .screenContent {
+  top: 3%;
+  left: 11%;
+  width: 78%;
+  height: 75%;
+  border-radius: 5px; /* Sudut layar laptop */
+}
+
+.screenshotSlide {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.screenshotSlide img {
+  object-fit: cover; /* default, bisa di-override di komponen */
+}
+
+.placeholderScreen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+  font-size: 1em;
+  height: 100%;
+}
+
+/* Kustomisasi Slick Carousel Dots */
+.deviceMockup :global(.slick-dots) {
+  bottom: 10px; /* Posisi dot di bawah layar */
+}
+
+.deviceMockup :global(.slick-dots li button:before) {
+  font-size: 8px; /* Ukuran dot */
+  color: rgba(255, 255, 255, 0.7); /* Warna dot */
+}
+
+.deviceMockup :global(.slick-dots li.slick-active button:before) {
+  color: white; /* Warna dot aktif */
+}

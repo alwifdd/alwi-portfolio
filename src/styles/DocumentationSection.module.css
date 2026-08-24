@@ -1,0 +1,127 @@
+/* src/styles/DocumentationSection.module.css */
+
+.documentationSection {
+  background-color: var(--bg-color); /* Latar belakang abu-abu terang */
+  padding: 80px 0;
+  text-align: center;
+  /* Pattern juga bisa ditambahkan di sini jika diinginkan, sesuai HeroSection */
+  background: radial-gradient(
+      ellipse at center,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.1) 70%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='rgba(0,0,0,0.02)'%3E%3Cpath d='M0 0h1v40H0V0zm39 0h1v40h-1V0zM0 0h40v1H0V0zm0 39h40v1H0V39z' /%3E%3C/g%3E%3C/svg%3E")
+      repeat,
+    var(--bg-color);
+  background-size: cover, 40px 40px, auto;
+  background-position: center center, 0 0, 0 0;
+  background-attachment: fixed, scroll, scroll;
+}
+
+.sectionTitle {
+  font-size: 3em;
+  font-weight: 700;
+  margin-bottom: 60px;
+  color: var(--text-color);
+  letter-spacing: -0.02em;
+}
+
+.documentationGrid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(320px, 1fr)
+  ); /* Sesuaikan ukuran kartu */
+  gap: 30px;
+  margin-bottom: 60px;
+  justify-items: center;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.documentationCard {
+  background-color: var(--light-bg-color);
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  max-width: 100%;
+}
+
+.documentationCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Ganti .documentationThumbnail Anda dengan yang ini */
+.documentationThumbnail {
+  width: 100%;
+  height: 250px;
+  object-fit: contain; /* <-- UBAH KE CONTAIN */
+  border-bottom: 1px solid #eee;
+  background-color: #f9f9f9; /* Tambahkan background lembut */
+  padding: 8px; /* Tambahkan sedikit padding */
+}
+
+.cardInfo {
+  padding: 15px;
+  text-align: left;
+}
+
+.documentationTitle {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: var(--text-color);
+  min-height: 2.5em; /* Minimal tinggi agar judul tidak bergeser */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Batasi 2 baris */
+  -webkit-box-orient: vertical;
+}
+
+.documentationMeta {
+  font-size: 0.9em;
+  color: var(--secondary-color);
+}
+
+.noDocumentation {
+  font-size: 1.2em;
+  color: var(--secondary-color);
+  margin-top: 30px;
+  grid-column: 1 / -1;
+}
+
+/* Responsif Mobile */
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 2em;
+    margin-bottom: 40px;
+  }
+  .documentationGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  /* Ganti .documentationThumbnail di dalam @media Anda dengan yang ini */
+
+  .documentationThumbnail {
+    height: 200px; /* Sedikit lebih tinggi dari sebelumnya */
+    object-fit: contain; /* <-- TAMBAHKAN INI */
+    background-color: #f9f9f9; /* <-- TAMBAHKAN INI */
+    padding: 8px; /* <-- TAMBAHKAN INI */
+  }
+}
+.cardInfo {
+  padding: 10px;
+}
+.documentationTitle {
+  font-size: 1em;
+  min-height: auto;
+}
+.documentationMeta {
+  font-size: 0.8em;
+}

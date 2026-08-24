@@ -1,0 +1,274 @@
+/* src/styles/Header.module.css */
+
+/* ================================================= */
+/* HEADER                                            */
+/* ================================================= */
+
+.headerContainer {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  z-index: 1000;
+
+  background: rgba(255, 255, 255, 0.88);
+
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.75);
+
+  border-radius: 0 0 34px 34px;
+
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.055),
+    0 2px 8px rgba(0, 0, 0, 0.025);
+}
+
+/* ================================================= */
+/* HEADER CONTENT                                    */
+/* ================================================= */
+
+.header {
+  width: 100%;
+
+  padding: 25px clamp(32px, 6vw, 100px);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+}
+
+/* ================================================= */
+/* LOGO                                              */
+/* ================================================= */
+
+.logo {
+  display: inline-flex;
+  align-items: baseline;
+
+  font-size: 2.45rem;
+  font-weight: 800;
+
+  line-height: 1;
+
+  letter-spacing: -0.05em;
+
+  text-decoration: none;
+}
+
+/* Huruf A benar-benar diam */
+
+.logoH {
+  display: inline-block;
+
+  color: var(--primary-color);
+}
+
+/* ================================================= */
+/* ANIMATED DOT                                      */
+/* ================================================= */
+
+.logoDot {
+  display: inline-block;
+
+  margin-left: 3px;
+
+  color: #ffc700;
+
+  transform-origin: center bottom;
+
+  /*
+    Main sekali saat element muncul.
+    Element akan di-remount ketika kembali ke atas.
+  */
+  animation: dotHello 0.75s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes dotHello {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+
+  28% {
+    transform: translateY(-9px) scale(1.22);
+  }
+
+  48% {
+    transform: translateY(1px) scale(0.96);
+  }
+
+  65% {
+    transform: translateY(-4px) scale(1.1);
+  }
+
+  82% {
+    transform: translateY(0) scale(0.98);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Logo tetap clean saat hover */
+
+.logo:hover {
+  text-decoration: none;
+}
+
+/* ================================================= */
+/* DOWNLOAD CV                                       */
+/* ================================================= */
+
+.downloadCvLink {
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 44px;
+
+  padding: 10px 18px;
+
+  color: var(--primary-color);
+
+  background: transparent;
+
+  border: 1px solid transparent;
+
+  border-radius: 999px;
+
+  font-size: 1.08rem;
+  font-weight: 700;
+
+  line-height: 1;
+
+  letter-spacing: -0.015em;
+
+  text-decoration: none;
+
+  transform-origin: center;
+
+  transition:
+    color 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.35s ease;
+}
+
+.downloadCvLink:hover {
+  color: #ffffff;
+
+  background: var(--primary-color);
+
+  border-color: rgba(0, 123, 255, 0.2);
+
+  transform: translateY(-3px) scale(1.07);
+
+  box-shadow:
+    0 13px 30px rgba(0, 123, 255, 0.2),
+    0 4px 10px rgba(0, 123, 255, 0.12);
+
+  text-decoration: none;
+}
+
+.downloadCvLink:active {
+  transform: translateY(-1px) scale(0.97);
+
+  box-shadow: 0 7px 16px rgba(0, 123, 255, 0.16);
+}
+
+/* ================================================= */
+/* TABLET / MOBILE                                   */
+/* ================================================= */
+
+@media (max-width: 768px) {
+  .headerContainer {
+    border-radius: 0 0 26px 26px;
+  }
+
+  .header {
+    padding: 20px 24px;
+  }
+
+  .logo {
+    font-size: 1.95rem;
+  }
+
+  .downloadCvLink {
+    min-height: 40px;
+
+    padding: 9px 14px;
+
+    font-size: 0.94rem;
+  }
+}
+
+/* ================================================= */
+/* SMALL MOBILE                                      */
+/* ================================================= */
+
+@media (max-width: 480px) {
+  .headerContainer {
+    border-radius: 0 0 22px 22px;
+  }
+
+  .header {
+    padding: 17px 18px;
+  }
+
+  .logo {
+    font-size: 1.75rem;
+  }
+
+  .downloadCvLink {
+    min-height: 38px;
+
+    padding: 8px 12px;
+
+    font-size: 0.86rem;
+  }
+}
+
+/* ================================================= */
+/* VERY SMALL MOBILE                                 */
+/* ================================================= */
+
+@media (max-width: 360px) {
+  .header {
+    padding: 15px;
+  }
+
+  .logo {
+    font-size: 1.6rem;
+  }
+
+  .downloadCvLink {
+    padding: 7px 10px;
+
+    font-size: 0.8rem;
+  }
+}
+
+/* ================================================= */
+/* REDUCED MOTION                                    */
+/* ================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .logoDot {
+    animation: none;
+  }
+
+  .downloadCvLink {
+    transition: none;
+  }
+}

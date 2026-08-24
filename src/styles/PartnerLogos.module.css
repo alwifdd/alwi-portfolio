@@ -1,0 +1,115 @@
+/* src/styles/PartnerLogos.module.css */
+
+.partnerLogosSection {
+  background-color: var(--light-bg-color); /* Latar belakang putih */
+  padding: 60px 0; /* Padding atas bawah */
+  overflow: hidden; /* Penting untuk menyembunyikan bagian logo yang tidak terlihat */
+  position: relative; /* Untuk positioning pseudo-elements jika ada gradient fade */
+  margin-top: -60px; /* Geser ke atas sedikit agar lebih dekat dengan hero section */
+}
+
+.marqueeContainer {
+  /* Container untuk memastikan marquee tidak melebihi lebar kontainer utama */
+  width: 100%;
+  overflow: hidden; /* Pastikan tidak ada scrollbar di sini */
+}
+
+.logoMarquee {
+  display: flex;
+  white-space: nowrap; /* Penting agar item tidak wrap ke bawah */
+  animation: marquee 30s linear infinite; /* Animasi geser */
+  /* Durasi animasi (30s) bisa disesuaikan. Semakin kecil, semakin cepat. */
+  /* Pastikan lebar total elemen di dalam marquee ini lebih besar dari lebar parent-nya. */
+  /* Misalnya, jika ada 24 logo @80px width + 40px margin, total 2880px */
+}
+
+.logoMarquee:hover {
+  animation-play-state: paused; /* Logo berhenti saat hover (opsional) */
+}
+
+.logoItem {
+  flex-shrink: 0; /* Penting agar item tidak mengecil */
+  margin-right: 40px; /* Jarak antar logo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Jika ingin efek grayscale saat tidak hover atau selalu grayscale */
+  /* filter: grayscale(100%); */ /* Mengubah semua logo menjadi hitam putih */
+  transition: filter 0.3s ease;
+}
+
+.logoItem:hover {
+  /* filter: grayscale(0%); */ /* Kembali berwarna saat hover (jika sebelumnya grayscale) */
+}
+
+/* Animasi Keyframes untuk Marquee */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%); /* Mulai dari posisi awal */
+  }
+  100% {
+    transform: translateX(
+      -50%
+    ); /* Geser ke kiri sejauh 50% dari lebar total elemen marquee */
+    /* Nilai -50% ini penting karena kita menduplikasi logo. */
+    /* Jika 3 kali duplikasi, mungkin perlu -33.33% atau -66.66% tergantung loopnya. */
+    /* Umumnya, duplikasi 2 kali dan geser -50% itu paling mudah dan umum. */
+  }
+}
+
+/* Opsional: Efek fade di ujung (seperti di referensi) */
+.partnerLogosSection::before,
+.partnerLogosSection::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 10%; /* Lebar efek fade di setiap sisi */
+  height: 100%;
+  z-index: 1;
+  pointer-events: none; /* Agar tidak menghalangi klik */
+}
+
+.partnerLogosSection::before {
+  left: 0;
+  background: linear-gradient(to right, var(--light-bg-color), transparent);
+}
+
+.partnerLogosSection::after {
+  right: 0;
+  background: linear-gradient(to left, var(--light-bg-color), transparent);
+}
+
+/* Sesuaikan ukuran logo dan margin jika perlu */
+@media (max-width: 768px) {
+  .logoItem {
+    margin-right: 20px; /* Kurangi jarak antar logo di mobile */
+  }
+  .logoMarquee {
+    animation-duration: 20s; /* Lebih cepat di mobile */
+  }
+  .partnerLogosSection {
+    padding: 40px 0;
+  }
+}
+
+/* Ganti @media block Anda dengan yang ini */
+
+@media (max-width: 768px) {
+  .logoItem {
+    margin-right: 30px; /* Jarak antar logo juga disesuaikan */
+  }
+
+  /* Kita targetkan gambar di dalam .logoItem untuk diubah ukurannya */
+  .logoItem img {
+    width: 50px !important; /* Perkecil ukuran logo */
+    height: 50px !important; /* Gunakan !important jika perlu untuk override prop di komponen */
+  }
+
+  .logoMarquee {
+    animation-duration: 25s; /* Sedikit percepat animasi di mobile */
+  }
+
+  .partnerLogosSection {
+    padding: 40px 0;
+  }
+}
