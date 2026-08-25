@@ -1,3 +1,6 @@
+import type { Metadata } from "next";
+
+import { cache } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -12,6 +15,16 @@ import StudyCaseRenderer, {
 } from "@/components/StudyCaseRenderer";
 
 import styles from "./StudyCasePage.module.css";
+
+// =====================================================
+// CONFIG
+// =====================================================
+
+const SITE_URL = "https://alwifuad.vercel.app";
+
+// =====================================================
+// TYPES
+// =====================================================
 
 interface Project {
   _id: string;
@@ -36,14 +49,95 @@ interface ProjectPageProps {
   }>;
 }
 
+// =====================================================
+// FETCH PROJECT
+// =====================================================
+
+const getProject = cache(async (slug: string) => {
+  return client.fetch<Project | null>(projectBySlugQuery, {
+    slug,
+  });
+});
+
+// =====================================================
+// DYNAMIC SEO METADATA
+// =====================================================
+
+export async function generateMetadata({
+  params,
+}: ProjectPageProps): Promise<Metadata> {
+  const { slug } = await params;
+
+  const project = await getProject(slug);
+
+  if (!project) {
+    return {
+      title: "Project Not Found",
+    };
+  }
+
+  const canonicalUrl = `${SITE_URL}/projects/${slug}`;
+
+  const description =
+    project.shortDescription ||
+    `Explore the ${project.title} project case study.`;
+
+  const heroImage = project.thumbnail
+    ? urlFor(project.thumbnail).width(1600).height(1000).quality(90).url()
+    : null;
+
+  return {
+    title: project.title,
+
+    description,
+
+    alternates: {
+      canonical: canonicalUrl,
+    },
+
+    openGraph: {
+      title: project.title,
+      description,
+      url: canonicalUrl,
+      siteName: "Moh Alwi Fuad Portfolio",
+      type: "article",
+
+      images: heroImage
+        ? [
+            {
+              url: heroImage,
+              width: 1600,
+              height: 1000,
+              alt: project.title,
+            },
+          ]
+        : undefined,
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: project.title,
+      description,
+      images: heroImage ? [heroImage] : undefined,
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
+// =====================================================
+// PAGE
+// =====================================================
+
 export default async function ProjectStudyCasePage({
   params,
 }: ProjectPageProps) {
   const { slug } = await params;
 
-  const project = await client.fetch<Project | null>(projectBySlugQuery, {
-    slug,
-  });
+  const project = await getProject(slug);
 
   if (!project) {
     notFound();
