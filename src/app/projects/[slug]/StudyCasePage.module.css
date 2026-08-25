@@ -1,199 +1,689 @@
+/* src/app/projects/[slug]/StudyCasePage.module.css */
+
+/* ================================================= */
+/* HEADER                                            */
+/* ================================================= */
+
 .studyCaseHeader {
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
-  z-index: 1000;
-  padding: 22px 30px;
+
+  padding: 28px clamp(24px, 4vw, 60px);
+
   background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid #eeeeee;
+
+  border-bottom: 1px solid rgba(20, 30, 45, 0.055);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
+
+/* ================================================= */
+/* BACK LINK                                         */
+/* ================================================= */
 
 .backLink {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+
+  gap: 9px;
+
   color: var(--primary-color);
-  text-decoration: none;
+
+  font-size: 0.95rem;
   font-weight: 600;
+
+  line-height: 1;
+
+  text-decoration: none;
+
+  transition:
+    color 0.25s ease,
+    gap 0.25s ease;
+}
+
+.backLink:hover {
+  gap: 12px;
+
+  color: #0056b3;
+
+  text-decoration: none;
 }
 
 .backArrow {
-  font-size: 1.5rem;
+  display: block;
+
+  width: 18px;
+  height: 18px;
+
+  flex-shrink: 0;
+
+  stroke-width: 2.2;
+
+  transition: transform 0.25s ease;
 }
+
+.backLink:hover .backArrow {
+  transform: translateX(-3px);
+}
+
+/* ================================================= */
+/* PAGE                                              */
+/* ================================================= */
 
 .studyCasePage {
+  width: 100%;
   min-height: 100vh;
-  padding-top: 90px;
+
   background: #ffffff;
+
+  overflow: hidden;
 }
+
+/* ================================================= */
+/* HERO                                              */
+/* ================================================= */
 
 .hero {
-  max-width: 1200px;
+  width: min(1200px, calc(100% - 56px));
+
   margin: 0 auto;
-  padding: 90px 30px 70px;
+
+  padding: 74px 0 92px;
+
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 60px;
+
+  grid-template-columns:
+    minmax(0, 0.92fr)
+    minmax(0, 1.08fr);
+
   align-items: center;
+
+  gap: clamp(72px, 6vw, 96px);
 }
+
+/* ================================================= */
+/* HERO CONTENT                                      */
+/* ================================================= */
 
 .heroContent {
+  width: 100%;
+  max-width: 540px;
+
   min-width: 0;
+
+  text-align: left;
 }
+
+/* ================================================= */
+/* CATEGORY                                          */
+/* ================================================= */
 
 .category {
-  display: inline-block;
+  display: inline-flex;
+
   margin-bottom: 18px;
+
+  padding: 7px 12px;
+
   color: var(--primary-color);
-  font-size: 0.82rem;
+
+  background: rgba(0, 123, 255, 0.065);
+
+  border: 1px solid rgba(0, 123, 255, 0.08);
+
+  border-radius: 999px;
+
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+
+  letter-spacing: 0.05em;
+
+  text-transform: capitalize;
 }
+
+/* ================================================= */
+/* TITLE                                             */
+/* ================================================= */
 
 .title {
+  width: 100%;
+  max-width: 540px;
+
   margin: 0;
-  font-size: clamp(3rem, 6vw, 5.4rem);
-  line-height: 0.98;
-  letter-spacing: -0.05em;
+
   color: #222;
+
+  font-size: clamp(2.75rem, 3.25vw, 3.55rem);
+  font-weight: 600;
+
+  line-height: 1.04;
+
+  letter-spacing: -0.045em;
+
+  word-break: normal;
+  overflow-wrap: normal;
 }
+
+/* ================================================= */
+/* DESCRIPTION                                       */
+/* ================================================= */
 
 .description {
-  margin-top: 28px;
-  font-size: 1.1rem;
-  line-height: 1.8;
+  width: 100%;
+  max-width: 535px;
+
+  margin: 34px 0 0;
+
   color: #68707c;
+
+  font-size: 1.02rem;
+
+  line-height: 1.72;
 }
+
+/* ================================================= */
+/* META                                              */
+/* ================================================= */
 
 .meta {
+  margin-top: 38px;
+
   display: flex;
+  align-items: flex-start;
+
   flex-wrap: wrap;
-  gap: 35px;
-  margin-top: 34px;
+
+  column-gap: 38px;
+  row-gap: 20px;
 }
 
-.meta div {
+.meta > div {
+  min-width: 0;
+
   display: flex;
   flex-direction: column;
-  gap: 5px;
+
+  gap: 6px;
 }
 
 .meta span {
-  color: #969ba4;
-  font-size: 0.8rem;
+  color: #959ba5;
+
+  font-size: 0.7rem;
+  font-weight: 600;
+
+  line-height: 1;
+
+  letter-spacing: 0.085em;
+
   text-transform: uppercase;
-  letter-spacing: 0.08em;
 }
 
 .meta strong {
   color: #333;
+
+  font-size: 0.92rem;
+  font-weight: 700;
+
+  line-height: 1.35;
 }
 
+/* ================================================= */
+/* TECHNOLOGIES                                      */
+/* ================================================= */
+
 .techs {
+  margin-top: 26px;
+
   display: flex;
+
   flex-wrap: wrap;
+
   gap: 8px;
-  margin-top: 32px;
 }
 
 .techs span {
-  padding: 8px 13px;
+  padding: 7px 13px;
+
+  color: #676d76;
+
+  background: #f2f3f5;
+
+  border: 1px solid rgba(20, 30, 45, 0.025);
+
   border-radius: 999px;
-  background: #f1f3f5;
-  color: #666;
-  font-size: 0.85rem;
+
+  font-size: 0.8rem;
+
+  line-height: 1.3;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
+.techs span:hover {
+  color: var(--primary-color);
+
+  background: rgba(0, 123, 255, 0.07);
+
+  transform: translateY(-1px);
+}
+
+/* ================================================= */
+/* ACTIONS                                           */
+/* ================================================= */
+
 .actions {
+  /*
+    INI YANG SEBELUMNYA HILANG.
+    Button sekarang punya jarak dari tech tags.
+  */
+  margin-top: 28px;
+
   display: flex;
+  align-items: center;
+
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 32px;
+
+  gap: 11px;
 }
 
 .primaryButton,
 .secondaryButton {
-  padding: 12px 20px;
+  min-height: 44px;
+
+  padding: 0 19px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
   border-radius: 10px;
+
+  font-size: 0.9rem;
   font-weight: 600;
+
   text-decoration: none;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .primaryButton {
+  color: #ffffff;
+
   background: var(--primary-color);
-  color: white;
+
+  border: 1px solid var(--primary-color);
+
+  box-shadow: 0 8px 22px rgba(0, 123, 255, 0.16);
+}
+
+.primaryButton:hover {
+  color: #ffffff;
+
+  background: #0056b3;
+
+  border-color: #0056b3;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 12px 28px rgba(0, 123, 255, 0.22);
+
+  text-decoration: none;
 }
 
 .secondaryButton {
-  border: 1px solid var(--primary-color);
   color: var(--primary-color);
+
+  background: transparent;
+
+  border: 1px solid rgba(0, 123, 255, 0.28);
 }
 
+.secondaryButton:hover {
+  color: #0056b3;
+
+  background: rgba(0, 123, 255, 0.055);
+
+  border-color: var(--primary-color);
+
+  transform: translateY(-2px);
+
+  text-decoration: none;
+}
+
+/* ================================================= */
+/* HERO IMAGE                                        */
+/* ================================================= */
+
 .heroImageBox {
-  min-height: 480px;
-  padding: 45px;
-  border-radius: 30px;
+  position: relative;
+
+  width: 100%;
+  max-width: 570px;
+
+  min-height: 500px;
+
+  justify-self: end;
+
+  padding: 42px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  overflow: hidden;
+
+  border-radius: 30px;
+
+  box-shadow:
+    0 24px 60px rgba(20, 30, 45, 0.075),
+    0 5px 16px rgba(20, 30, 45, 0.035);
+
+  transition:
+    transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.4s ease;
+}
+
+.heroImageBox:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 30px 68px rgba(20, 30, 45, 0.1),
+    0 7px 20px rgba(20, 30, 45, 0.045);
 }
 
 .heroImage {
   width: 100%;
   height: auto;
+
+  max-height: 390px;
+
   object-fit: contain;
+
+  filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.11));
+
+  transition: transform 0.4s ease;
 }
 
+.heroImageBox:hover .heroImage {
+  transform: scale(1.015);
+}
+
+/* ================================================= */
+/* ARTICLE                                           */
+/* ================================================= */
+
 .article {
-  padding: 30px 30px 120px;
+  width: min(1200px, calc(100% - 56px));
+
+  margin: 0 auto;
+
+  padding: 40px 0 120px;
+
   overflow: hidden;
 }
 
-@media (max-width: 900px) {
+/* ================================================= */
+/* LAPTOP                                            */
+/* ================================================= */
+
+@media (max-width: 1100px) {
   .hero {
-    grid-template-columns: 1fr;
-    padding-top: 60px;
+    width: min(1060px, calc(100% - 48px));
+
+    grid-template-columns:
+      minmax(0, 0.95fr)
+      minmax(0, 1.05fr);
+
+    gap: 52px;
+  }
+
+  /*
+    Jangan dibesarkan lagi di breakpoint.
+    CSS lama justru membuat title kembali membesar.
+  */
+  .title {
+    font-size: clamp(2.65rem, 4vw, 3.35rem);
   }
 
   .heroImageBox {
-    min-height: 320px;
-    padding: 30px;
+    max-width: 520px;
+
+    min-height: 460px;
+
+    padding: 36px;
   }
 
-  .title {
-    font-size: 3.3rem;
+  .heroImage {
+    max-height: 360px;
   }
 }
 
-@media (max-width: 600px) {
-  .studyCaseHeader {
-    padding: 18px 20px;
-  }
+/* ================================================= */
+/* TABLET                                            */
+/* ================================================= */
 
-  .studyCasePage {
-    padding-top: 70px;
+@media (max-width: 900px) {
+  .studyCaseHeader {
+    padding: 24px 28px;
   }
 
   .hero {
-    padding: 45px 20px;
-    gap: 40px;
+    width: min(700px, calc(100% - 48px));
+
+    padding: 64px 0 80px;
+
+    grid-template-columns: 1fr;
+
+    align-items: start;
+
+    gap: 50px;
   }
 
-  .article {
-    padding-left: 20px;
-    padding-right: 20px;
+  .heroContent {
+    max-width: 650px;
   }
 
   .title {
-    font-size: 2.7rem;
+    max-width: 620px;
+
+    font-size: clamp(2.8rem, 7vw, 3.65rem);
+  }
+
+  .description {
+    max-width: 620px;
   }
 
   .heroImageBox {
-    min-height: 250px;
+    width: 100%;
+    max-width: 680px;
+
+    min-height: 430px;
+
+    justify-self: center;
+  }
+
+  .article {
+    width: min(700px, calc(100% - 48px));
+  }
+}
+
+/* ================================================= */
+/* MOBILE                                            */
+/* ================================================= */
+
+@media (max-width: 768px) {
+  .studyCaseHeader {
+    padding: 21px 22px;
+  }
+
+  .backLink {
+    gap: 8px;
+
+    font-size: 0.88rem;
+  }
+
+  .backArrow {
+    width: 17px;
+    height: 17px;
+  }
+
+  .hero {
+    width: calc(100% - 40px);
+
+    padding: 52px 0 70px;
+
+    gap: 40px;
+  }
+
+  .category {
+    margin-bottom: 16px;
+
+    font-size: 0.68rem;
+  }
+
+  .title {
+    max-width: 100%;
+
+    font-size: clamp(2.45rem, 10vw, 3.15rem);
+
+    line-height: 1.02;
+  }
+
+  .description {
+    margin-top: 26px;
+
+    font-size: 0.94rem;
+
+    line-height: 1.68;
+  }
+
+  .meta {
+    margin-top: 32px;
+
+    column-gap: 25px;
+    row-gap: 18px;
+  }
+
+  .meta strong {
+    font-size: 0.86rem;
+  }
+
+  .techs {
+    margin-top: 23px;
+  }
+
+  .actions {
+    margin-top: 25px;
+  }
+
+  .heroImageBox {
+    min-height: 310px;
+
+    padding: 26px;
+
+    border-radius: 23px;
+  }
+
+  .heroImage {
+    max-height: 265px;
+  }
+
+  .article {
+    width: calc(100% - 40px);
+
+    padding: 30px 0 85px;
+  }
+}
+
+/* ================================================= */
+/* SMALL MOBILE                                      */
+/* ================================================= */
+
+@media (max-width: 480px) {
+  .studyCaseHeader {
+    padding: 19px 18px;
+  }
+
+  .hero {
+    width: calc(100% - 34px);
+
+    padding: 44px 0 60px;
+
+    gap: 34px;
+  }
+
+  .title {
+    font-size: clamp(2.2rem, 10vw, 2.75rem);
+  }
+
+  .description {
+    margin-top: 24px;
+  }
+
+  .meta {
+    margin-top: 30px;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 18px 16px;
+  }
+
+  .techs {
+    margin-top: 22px;
+  }
+
+  .actions {
+    margin-top: 24px;
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+  }
+
+  .heroImageBox {
+    min-height: 260px;
+
     padding: 20px;
-    border-radius: 22px;
+
+    border-radius: 20px;
+  }
+
+  .heroImage {
+    max-height: 225px;
+  }
+
+  .article {
+    width: calc(100% - 34px);
+  }
+}
+
+/* ================================================= */
+/* REDUCED MOTION                                    */
+/* ================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .backArrow,
+  .techs span,
+  .primaryButton,
+  .secondaryButton,
+  .heroImageBox,
+  .heroImage {
+    transition: none;
   }
 }

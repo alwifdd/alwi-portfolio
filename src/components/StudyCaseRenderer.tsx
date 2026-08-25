@@ -5,6 +5,10 @@ import type { PortableTextBlock, TypedObject } from "@portabletext/types";
 import { urlFor } from "@/sanity/lib/image";
 import styles from "../styles/StudyCaseRenderer.module.css";
 
+/* ================================================= */
+/* TYPES                                             */
+/* ================================================= */
+
 interface SectionTitleBlock extends TypedObject {
   _type: "sectionTitle";
   eyebrow?: string;
@@ -66,6 +70,18 @@ interface GalleryBlock extends TypedObject {
   }[];
 }
 
+/* ================================================= */
+/* YOUTUBE VIDEO                                     */
+/* ================================================= */
+
+interface YouTubeVideoBlock extends TypedObject {
+  _type: "youtubeVideo";
+  title?: string;
+  url?: string;
+  caption?: string;
+  layout?: "content" | "wide";
+}
+
 interface HighlightBlock extends TypedObject {
   _type: "highlight";
   label?: string;
@@ -89,8 +105,75 @@ export type StudyCaseBlock =
   | CardGridBlock
   | TwoColumnBlock
   | GalleryBlock
+  | YouTubeVideoBlock
   | HighlightBlock
   | SpacerBlock;
+
+/* ================================================= */
+/* YOUTUBE HELPERS                                   */
+/* ================================================= */
+
+function getYouTubeVideoId(url: string): string | null {
+  try {
+    const parsedUrl = new URL(url);
+
+    const hostname = parsedUrl.hostname.replace("www.", "");
+
+    /* youtube.com/watch?v=... */
+    if (hostname === "youtube.com" || hostname === "m.youtube.com") {
+      if (parsedUrl.pathname === "/watch") {
+        return parsedUrl.searchParams.get("v");
+      }
+
+      /*
+        youtube.com/embed/...
+        youtube.com/shorts/...
+        youtube.com/live/...
+      */
+      const pathParts = parsedUrl.pathname.split("/").filter(Boolean);
+
+      if (
+        pathParts[0] === "embed" ||
+        pathParts[0] === "shorts" ||
+        pathParts[0] === "live"
+      ) {
+        return pathParts[1] || null;
+      }
+    }
+
+    /* youtu.be/... */
+    if (hostname === "youtu.be") {
+      const pathParts = parsedUrl.pathname.split("/").filter(Boolean);
+
+      return pathParts[0] || null;
+    }
+
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+function getYouTubeEmbedUrl(url?: string) {
+  if (!url) {
+    return null;
+  }
+
+  const videoId = getYouTubeVideoId(url);
+
+  if (!videoId) {
+    return null;
+  }
+
+  /*
+    youtube-nocookie = privacy enhanced embed
+  */
+  return `https://www.youtube-nocookie.com/embed/${videoId}`;
+}
+
+/* ================================================= */
+/* PORTABLE TEXT COMPONENTS                          */
+/* ================================================= */
 
 const components: PortableTextComponents = {
   block: {
@@ -133,6 +216,10 @@ const components: PortableTextComponents = {
   },
 
   types: {
+    /* ================================================= */
+    /* SECTION TITLE                                     */
+    /* ================================================= */
+
     sectionTitle: ({ value }) => {
       const block = value as SectionTitleBlock;
 
@@ -152,6 +239,10 @@ const components: PortableTextComponents = {
         </section>
       );
     },
+
+    /* ================================================= */
+    /* IMAGE                                             */
+    /* ================================================= */
 
     studyCaseImage: ({ value }) => {
       const block = value as StudyCaseImageBlock;
@@ -188,6 +279,10 @@ const components: PortableTextComponents = {
       );
     },
 
+    /* ================================================= */
+    /* STATISTICS                                        */
+    /* ================================================= */
+
     statsBlock: ({ value }) => {
       const block = value as StatsBlock;
 
@@ -207,6 +302,10 @@ const components: PortableTextComponents = {
         </section>
       );
     },
+
+    /* ================================================= */
+    /* COLORED CARDS                                     */
+    /* ================================================= */
 
     cardGrid: ({ value }) => {
       const block = value as CardGridBlock;
@@ -246,6 +345,10 @@ const components: PortableTextComponents = {
       );
     },
 
+    /* ================================================= */
+    /* TWO COLUMN                                        */
+    /* ================================================= */
+
     twoColumn: ({ value }) => {
       const block = value as TwoColumnBlock;
 
@@ -275,6 +378,10 @@ const components: PortableTextComponents = {
         </section>
       );
     },
+
+    /* ================================================= */
+    /* GALLERY                                           */
+    /* ================================================= */
 
     gallery: ({ value }) => {
       const block = value as GalleryBlock;
@@ -320,6 +427,49 @@ const components: PortableTextComponents = {
       );
     },
 
+    /* ================================================= */
+    /* YOUTUBE VIDEO                                     */
+    /* ================================================= */
+
+    youtubeVideo: ({ value }) => {
+      const block = value as YouTubeVideoBlock;
+
+      const embedUrl = getYouTubeEmbedUrl(block.url);
+
+      if (!embedUrl) {
+        return null;
+      }
+
+      const layoutClass =
+        block.layout === "content" ? styles.youtubeContent : styles.youtubeWide;
+
+      return (
+        <section className={`${styles.youtubeSection} ${layoutClass}`}>
+          {block.title && (
+            <h3 className={styles.youtubeTitle}>{block.title}</h3>
+          )}
+
+          <div className={styles.youtubeFrame}>
+            <iframe
+              src={embedUrl}
+              title={block.title || "Project walkthrough video"}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
+
+          {block.caption && (
+            <p className={styles.youtubeCaption}>{block.caption}</p>
+          )}
+        </section>
+      );
+    },
+
+    /* ================================================= */
+    /* HIGHLIGHT                                         */
+    /* ================================================= */
+
     highlight: ({ value }) => {
       const block = value as HighlightBlock;
 
@@ -328,6 +478,7 @@ const components: PortableTextComponents = {
           className={styles.highlight}
           style={{
             backgroundColor: block.backgroundColor || "#4E8DF7",
+
             color: block.textColor || "#FFFFFF",
           }}
         >
@@ -343,6 +494,10 @@ const components: PortableTextComponents = {
         </section>
       );
     },
+
+    /* ================================================= */
+    /* SPACING                                           */
+    /* ================================================= */
 
     spacer: ({ value }) => {
       const block = value as SpacerBlock;
@@ -364,6 +519,10 @@ const components: PortableTextComponents = {
     },
   },
 };
+
+/* ================================================= */
+/* RENDERER                                          */
+/* ================================================= */
 
 export default function StudyCaseRenderer({
   value,

@@ -11,6 +11,8 @@ import "slick-carousel/slick/slick-theme.css";
 import styles from "../styles/RecentWorkSection.module.css";
 import type { ProjectItem } from "../data/projects";
 
+import RecentWorkCursor from "./RecentWorkCursor";
+
 interface RecentWorkSectionClientProps {
   projects: ProjectItem[];
 }
@@ -35,8 +37,22 @@ const RecentWorkSectionClient: React.FC<RecentWorkSectionClientProps> = ({
 
   return (
     <section id="selected-work" className={styles.recentWorkSection}>
+      {/* ============================================ */}
+      {/* PLAYFUL CURSOR — ACTIVE ON ENTIRE SECTION   */}
+      {/* ============================================ */}
+
+      <RecentWorkCursor />
+
       <div className="container">
+        {/* ========================================== */}
+        {/* SECTION TITLE                              */}
+        {/* ========================================== */}
+
         <h2 className={styles.sectionTitle}>Selected Work</h2>
+
+        {/* ========================================== */}
+        {/* PROJECTS                                   */}
+        {/* ========================================== */}
 
         <div className={styles.projectsContainer}>
           {projects.map((project, index) => (
@@ -46,19 +62,26 @@ const RecentWorkSectionClient: React.FC<RecentWorkSectionClientProps> = ({
                 isOdd(index) ? styles.oddRow : styles.evenRow
               }`}
             >
-              {/* PROJECT IMAGE */}
+              {/* ==================================== */}
+              {/* PROJECT IMAGE                        */}
+              {/* ==================================== */}
+
               <div
                 className={styles.projectImageColumn}
                 style={{
                   backgroundColor: project.bgColor || "#4E8DF7",
                 }}
               >
+                {/* Background pattern */}
+
                 <div
                   className={styles.projectWavePattern}
                   style={{
                     backgroundImage: `url("${project.patternBg}")`,
                   }}
                 />
+
+                {/* Clickable project image */}
 
                 <Link
                   href={project.studyCaseLink}
@@ -101,13 +124,20 @@ const RecentWorkSectionClient: React.FC<RecentWorkSectionClientProps> = ({
                 </Link>
               </div>
 
-              {/* PROJECT CONTENT */}
+              {/* ==================================== */}
+              {/* PROJECT CONTENT                      */}
+              {/* ==================================== */}
+
               <div className={styles.projectContentColumn}>
                 <h3 className={styles.projectName}>{project.name}</h3>
 
                 <p className={styles.projectDescription}>
                   {project.description}
                 </p>
+
+                {/* ================================== */}
+                {/* TECHNOLOGIES                       */}
+                {/* ================================== */}
 
                 <div className={styles.projectTechs}>
                   {project.technologies.map((technology, techIndex) => (
@@ -116,6 +146,10 @@ const RecentWorkSectionClient: React.FC<RecentWorkSectionClientProps> = ({
                     </span>
                   ))}
                 </div>
+
+                {/* ================================== */}
+                {/* ACTIONS                            */}
+                {/* ================================== */}
 
                 <div className={styles.cardActions}>
                   <Link
@@ -152,8 +186,12 @@ const RecentWorkSectionClient: React.FC<RecentWorkSectionClientProps> = ({
           ))}
         </div>
 
+        {/* ========================================== */}
+        {/* VIEW ALL                                   */}
+        {/* ========================================== */}
+
         <Link href="/projects" className={`${styles.seeAllButton} btn`}>
-          See All My Works
+          View All Projects
         </Link>
       </div>
     </section>

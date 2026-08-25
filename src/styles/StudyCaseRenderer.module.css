@@ -301,4 +301,105 @@
   .highlightTitle {
     font-size: 1.7rem;
   }
+
+  .youtubeSection {
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+
+  .youtubeTitle {
+    margin-bottom: 20px;
+
+    font-size: 1.55rem;
+  }
+
+  .youtubeFrame {
+    border-radius: 16px;
+  }
+
+  .youtubeCaption {
+    margin-top: 13px;
+
+    font-size: 0.84rem;
+
+    line-height: 1.6;
+  }
+}
+/* ================================================= */
+/* YOUTUBE VIDEO                                     */
+/* ================================================= */
+
+.youtubeSection {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.youtubeContent {
+  max-width: 760px;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.youtubeWide {
+  max-width: 1100px;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.youtubeTitle {
+  margin: 0 0 26px;
+
+  color: #222;
+
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  font-weight: 600;
+
+  line-height: 1.2;
+
+  letter-spacing: -0.025em;
+}
+
+.youtubeFrame {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 16 / 9;
+
+  overflow: hidden;
+
+  background: #111;
+
+  border-radius: 24px;
+
+  box-shadow:
+    0 22px 55px rgba(20, 30, 45, 0.09),
+    0 5px 18px rgba(20, 30, 45, 0.04);
+}
+
+.youtubeFrame iframe {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  border: 0;
+}
+
+.youtubeCaption {
+  max-width: 760px;
+
+  margin: 16px auto 0;
+
+  color: #8a8f98;
+
+  font-size: 0.9rem;
+
+  line-height: 1.65;
+
+  text-align: center;
 }

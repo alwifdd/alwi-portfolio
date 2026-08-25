@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { FiArrowLeft } from "react-icons/fi";
 
 import { client } from "@/sanity/lib/client";
 import { projectBySlugQuery } from "@/sanity/lib/queries";
@@ -54,16 +55,32 @@ export default async function ProjectStudyCasePage({
 
   return (
     <>
-      <header className={styles.studyCaseHeader}>
-        <Link href="/" className={styles.backLink}>
-          <span className={styles.backArrow}>&larr;</span>
+      {/* ============================================ */}
+      {/* BACK NAVIGATION                              */}
+      {/* ============================================ */}
 
-          <span>Take me back home</span>
+      <header className={styles.studyCaseHeader}>
+        <Link href="/#selected-work" className={styles.backLink}>
+          <FiArrowLeft className={styles.backArrow} aria-hidden="true" />
+
+          <span>Back to my work</span>
         </Link>
       </header>
 
+      {/* ============================================ */}
+      {/* STUDY CASE PAGE                              */}
+      {/* ============================================ */}
+
       <main className={styles.studyCasePage}>
+        {/* ========================================== */}
+        {/* HERO                                       */}
+        {/* ========================================== */}
+
         <section className={styles.hero}>
+          {/* ======================================== */}
+          {/* LEFT CONTENT                             */}
+          {/* ======================================== */}
+
           <div className={styles.heroContent}>
             {project.category && (
               <span className={styles.category}>
@@ -76,6 +93,10 @@ export default async function ProjectStudyCasePage({
             {project.shortDescription && (
               <p className={styles.description}>{project.shortDescription}</p>
             )}
+
+            {/* ====================================== */}
+            {/* META                                   */}
+            {/* ====================================== */}
 
             <div className={styles.meta}>
               {project.role && (
@@ -100,6 +121,10 @@ export default async function ProjectStudyCasePage({
               )}
             </div>
 
+            {/* ====================================== */}
+            {/* TECHNOLOGIES                           */}
+            {/* ====================================== */}
+
             {project.technologies && project.technologies.length > 0 && (
               <div className={styles.techs}>
                 {project.technologies.map((tech) => (
@@ -107,6 +132,10 @@ export default async function ProjectStudyCasePage({
                 ))}
               </div>
             )}
+
+            {/* ====================================== */}
+            {/* ACTIONS                                */}
+            {/* ====================================== */}
 
             <div className={styles.actions}>
               {project.demoUrl && (
@@ -133,6 +162,10 @@ export default async function ProjectStudyCasePage({
             </div>
           </div>
 
+          {/* ======================================== */}
+          {/* RIGHT IMAGE                              */}
+          {/* ======================================== */}
+
           {heroImage && (
             <div
               className={styles.heroImageBox}
@@ -151,6 +184,10 @@ export default async function ProjectStudyCasePage({
             </div>
           )}
         </section>
+
+        {/* ========================================== */}
+        {/* STUDY CASE CONTENT                         */}
+        {/* ========================================== */}
 
         <article className={styles.article}>
           <StudyCaseRenderer value={project.studyCase ?? []} />
