@@ -77,10 +77,10 @@ const HeroSection: React.FC = () => {
           onMouseEnter={() => setCursorMode("text")}
           onMouseLeave={() => setCursorMode("default")}
         >
-          I&apos;m a fullstack developer with a strong interest in design. I
-          build responsive, functional, and user-friendly web experiences
-          combining clean code, usability, and smooth interaction across all
-          devices.
+          I&apos;m an Information Systems graduate who enjoys building, testing,
+          and improving digital products. I work across QA, UI/UX, data, and web
+          development, with a focus on creating useful and user-friendly
+          experiences.
         </p>
 
         <p className={styles.heroMicrocopy}>
