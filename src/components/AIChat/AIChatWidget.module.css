@@ -1,0 +1,743 @@
+/* =========================
+   WRAPPER
+========================= */
+
+.wrapper {
+  position: fixed;
+  right: 24px;
+  bottom: 90px;
+  z-index: 1000;
+}
+
+/* =========================
+   FLOATING BUTTON
+========================= */
+
+.chatButton {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 0;
+
+  border: none;
+  outline: none;
+  background: transparent;
+
+  cursor: pointer;
+
+  animation: floating 3.2s ease-in-out infinite;
+}
+
+.chatButton:focus,
+.chatButton:focus-visible {
+  outline: none;
+}
+
+/* =========================
+   FLOATING AVATAR
+========================= */
+
+.avatar {
+  position: relative;
+
+  width: 88px;
+  height: 88px;
+
+  flex-shrink: 0;
+
+  overflow: visible;
+  border-radius: 50%;
+
+  background: #bfe3ff;
+
+  box-shadow: 0 8px 22px rgba(96, 165, 250, 0.22);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.avatar::before {
+  content: "";
+
+  position: absolute;
+
+  inset: -16px;
+
+  z-index: -1;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(147, 197, 253, 0.42) 0%,
+    rgba(147, 197, 253, 0.24) 35%,
+    rgba(147, 197, 253, 0.1) 58%,
+    rgba(147, 197, 253, 0) 76%
+  );
+
+  filter: blur(3px);
+
+  pointer-events: none;
+}
+
+.avatar img {
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* =========================
+   LET'S TALK
+========================= */
+
+.message {
+  position: relative;
+
+  padding: 10px 15px;
+
+  border: 1px solid rgba(96, 165, 250, 0.35);
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.96);
+  color: #1e3a5f;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+
+  white-space: nowrap;
+
+  box-shadow: 0 6px 18px rgba(59, 130, 246, 0.1);
+
+  opacity: 0;
+  transform: translateX(8px);
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.message::after {
+  content: "";
+
+  position: absolute;
+
+  right: -6px;
+  top: 50%;
+
+  width: 11px;
+  height: 11px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border-top: 1px solid rgba(96, 165, 250, 0.35);
+  border-right: 1px solid rgba(96, 165, 250, 0.35);
+
+  transform: translateY(-50%) rotate(45deg);
+}
+
+/* =========================
+   FLOATING HOVER
+========================= */
+
+.chatButton:hover .avatar {
+  transform: scale(1.06);
+
+  box-shadow: 0 10px 28px rgba(96, 165, 250, 0.3);
+}
+
+.chatButton:hover .avatar::before {
+  transform: scale(1.08);
+}
+
+.chatButton:hover .message {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* =========================
+   CHAT PANEL
+========================= */
+
+.chatPanel {
+  position: absolute;
+
+  right: 0;
+  bottom: 0;
+
+  width: 400px;
+  height: 640px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 24px;
+
+  box-shadow:
+    0 24px 70px rgba(15, 23, 42, 0.18),
+    0 8px 24px rgba(15, 23, 42, 0.08);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: translateY(18px) scale(0.98);
+  transform-origin: bottom right;
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0.25s ease;
+}
+
+.isOpen .chatPanel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  transform: translateY(0) scale(1);
+}
+
+/* =========================
+   CHAT HEADER
+========================= */
+
+.chatHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 72px;
+
+  padding: 14px 16px;
+
+  border-bottom: 1px solid #eeeeef;
+
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.profileAvatar {
+  position: relative;
+
+  width: 44px;
+  height: 44px;
+
+  flex-shrink: 0;
+
+  overflow: hidden;
+
+  border-radius: 50%;
+
+  background: #bfe3ff;
+}
+
+.profileAvatar img {
+  object-fit: cover;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.profileName {
+  color: #171717;
+
+  font-size: 15px;
+  font-weight: 650;
+
+  letter-spacing: -0.2px;
+}
+
+.profileStatus {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  color: #8b8b91;
+
+  font-size: 12px;
+  font-weight: 450;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #34c759;
+}
+
+.closeButton {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #f2f2f7;
+  color: #6e6e73;
+
+  font-size: 23px;
+  font-weight: 300;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.closeButton:hover {
+  background: #e5e5ea;
+  transform: scale(1.05);
+}
+
+/* =========================
+   CHAT CONTENT
+========================= */
+
+.chatContent {
+  flex: 1;
+
+  overflow-y: auto;
+
+  padding: 20px 16px 18px;
+
+  background: #ffffff;
+
+  scrollbar-width: thin;
+}
+
+.chatContent::-webkit-scrollbar {
+  width: 5px;
+}
+
+.chatContent::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #d1d1d6;
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+.chatMessage {
+  display: flex;
+  align-items: flex-end;
+
+  gap: 7px;
+
+  margin-bottom: 20px;
+}
+
+.aiMessage {
+  justify-content: flex-start;
+}
+
+.smallAvatar {
+  position: relative;
+
+  width: 28px;
+  height: 28px;
+
+  flex-shrink: 0;
+
+  overflow: hidden;
+
+  border-radius: 50%;
+
+  background: #bfe3ff;
+}
+
+.smallAvatar img {
+  object-fit: cover;
+}
+
+.messageGroup {
+  max-width: 78%;
+}
+
+.bubble {
+  padding: 11px 14px;
+
+  border-radius: 18px 18px 18px 5px;
+
+  background: #e9e9eb;
+  color: #1c1c1e;
+
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.bubble p {
+  margin: 0;
+}
+
+.bubble p + p {
+  margin-top: 7px;
+}
+
+/* =========================
+   SHORTCUTS
+========================= */
+
+.shortcutSection {
+  margin-top: 22px;
+  margin-left: 35px;
+}
+
+.shortcutTitle {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: #8b8b91;
+
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.shortcuts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.shortcut {
+  padding: 8px 12px;
+
+  border: 1px solid #d8d8dc;
+  border-radius: 999px;
+
+  background: #ffffff;
+  color: #3a3a3c;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.shortcut:hover {
+  background: #f2f2f7;
+  border-color: #c7c7cc;
+
+  transform: translateY(-1px);
+}
+
+.shortcut:active {
+  transform: scale(0.97);
+}
+
+/* =========================
+   INPUT
+========================= */
+
+.inputArea {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 12px 14px;
+
+  border-top: 1px solid #eeeeef;
+
+  background: #ffffff;
+}
+
+.inputArea input {
+  flex: 1;
+
+  min-width: 0;
+
+  height: 42px;
+
+  padding: 0 15px;
+
+  border: 1px solid #d8d8dc;
+  border-radius: 21px;
+
+  outline: none;
+
+  background: #f2f2f7;
+  color: #1c1c1e;
+
+  font-family: inherit;
+  font-size: 14px;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.inputArea input::placeholder {
+  color: #8e8e93;
+}
+
+.inputArea input:focus {
+  border-color: #b7b7bd;
+  background: #ffffff;
+}
+
+.sendButton {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #0a84ff;
+  color: #ffffff;
+
+  font-size: 20px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.sendButton:hover:not(:disabled) {
+  transform: scale(1.05);
+}
+
+.sendButton:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.sendButton:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* =========================
+   FLOATING ANIMATION
+========================= */
+
+@keyframes floating {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 768px) {
+  .wrapper {
+    right: 18px;
+    bottom: 80px;
+  }
+
+  .avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .avatar::before {
+    inset: -14px;
+  }
+
+  .message {
+    padding: 9px 13px;
+    font-size: 13px;
+  }
+
+  .chatPanel {
+    width: 390px;
+    height: min(640px, calc(100dvh - 100px));
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 480px) {
+  .wrapper {
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .avatar {
+    width: 74px;
+    height: 74px;
+  }
+
+  .avatar::before {
+    inset: -13px;
+  }
+
+  .message {
+    padding: 8px 11px;
+    font-size: 12px;
+
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .chatPanel {
+    position: fixed;
+
+    right: 10px;
+    bottom: 10px;
+
+    width: calc(100vw - 20px);
+    height: calc(100dvh - 90px);
+
+    min-height: 480px;
+
+    border-radius: 22px;
+  }
+
+  .chatHeader {
+    min-height: 68px;
+  }
+
+  .chatContent {
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+
+  .shortcutSection {
+    margin-left: 35px;
+  }
+
+  .shortcuts {
+    gap: 6px;
+
+    max-width: 100%;
+  }
+
+  .shortcut {
+    padding: 8px 11px;
+  }
+}
+
+/* =========================
+   USER MESSAGE
+========================= */
+
+.userMessage {
+  justify-content: flex-end;
+}
+
+.userMessage .messageGroup {
+  display: flex;
+  justify-content: flex-end;
+
+  max-width: 78%;
+}
+
+.userMessage .bubble {
+  border-radius: 18px 18px 5px 18px;
+
+  background: #0a84ff;
+  color: #ffffff;
+}
+
+/* =========================
+   AI MESSAGE PARAGRAPH
+========================= */
+
+.aiMessage .bubble p {
+  margin: 0;
+}
+
+.userMessage .bubble p {
+  margin: 0;
+}
+
+/* =========================
+   TYPING INDICATOR
+========================= */
+
+.typingBubble {
+  display: flex;
+  align-items: center;
+
+  gap: 4px;
+
+  min-width: 48px;
+  min-height: 38px;
+
+  padding: 11px 13px;
+}
+
+.typingBubble span {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #8e8e93;
+
+  animation: typing 1.2s infinite ease-in-out;
+}
+
+.typingBubble span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.typingBubble span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes typing {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+
+  30% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
