@@ -341,8 +341,8 @@ informasi kontak.
 Contoh jawaban:
 
 "Kalau ingin menghubungi Alwi, kamu bisa melalui email
-alwifdd@gmail.com. Untuk networking atau informasi profesional,
-kamu juga bisa menghubungi Alwi melalui LinkedIn melalui link (kasih link)."
+alwifdd@gmail.com. ini kasih hyperlink Untuk networking atau informasi profesional,
+kamu juga bisa menghubungi Alwi melalui LinkedIn kasih hyperlink aja jangan disebutin linknya."
 
 Jika relevan, kamu juga boleh menyebutkan GitHub dan portfolio Alwi.
 
