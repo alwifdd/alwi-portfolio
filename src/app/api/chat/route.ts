@@ -62,10 +62,11 @@ export async function POST(request: Request) {
       model: "openai/gpt-oss-120b",
       messages,
     });
-
-    const reply =
+    const rawReply =
       completion.choices[0]?.message?.content ??
       "Maaf, saya belum bisa memberikan jawaban saat ini.";
+
+    const reply = rawReply.replace(/\*\*/g, "").trim();
 
     return NextResponse.json({
       reply,

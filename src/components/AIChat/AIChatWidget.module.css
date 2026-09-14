@@ -601,7 +601,7 @@
 @media (max-width: 480px) {
   .wrapper {
     right: 10px;
-    bottom: 10px;
+    bottom: 80px;
   }
 
   .avatar {
@@ -628,8 +628,8 @@
     bottom: 10px;
 
     width: calc(100vw - 20px);
-    height: calc(100dvh - 90px);
 
+    height: min(600px, calc(100svh - 90px));
     min-height: 480px;
 
     border-radius: 22px;
