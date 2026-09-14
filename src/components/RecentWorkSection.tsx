@@ -28,9 +28,19 @@ async function getHomepageProjects(): Promise<ProjectItem[]> {
       featuredProjectsQuery,
     );
 
-    const convertedSanityProjects: ProjectItem[] = sanityProjects.map(
-      (project, index) => ({
-        // ID sementara untuk menyesuaikan interface project lama
+    // DEBUG: lihat berapa project yang benar-benar dikirim Sanity
+    console.log(
+      "SANITY HOMEPAGE PROJECTS:",
+      sanityProjects.map((project) => ({
+        title: project.title,
+        slug: project.slug,
+        order: project.order,
+      })),
+    );
+
+    const convertedSanityProjects: ProjectItem[] = sanityProjects
+      .filter((project) => Boolean(project.slug))
+      .map((project, index) => ({
         id: 1000 + index,
 
         name: project.title,
@@ -45,7 +55,6 @@ async function getHomepageProjects(): Promise<ProjectItem[]> {
 
         demoLink: project.demoUrl ?? undefined,
 
-        // Untuk sementara project dari CMS dianggap desktop.
         mockupType: "desktop",
 
         screenshots: project.thumbnail
@@ -55,13 +64,8 @@ async function getHomepageProjects(): Promise<ProjectItem[]> {
         bgColor: project.cardBackgroundColor || "#4E8DF7",
 
         patternBg,
-      }),
-    );
+      }));
 
-    /*
-      Hindari project yang sudah ada di Sanity
-      muncul lagi dari projects.ts.
-    */
     const sanityLinks = new Set(
       convertedSanityProjects.map((project) => project.studyCaseLink),
     );
@@ -70,21 +74,23 @@ async function getHomepageProjects(): Promise<ProjectItem[]> {
       (project) => !sanityLinks.has(project.studyCaseLink),
     );
 
-    /*
-      Prioritas:
-      1. Featured project dari Sanity
-      2. Project lokal yang belum dimigrasi
+    const finalProjects = [
+      ...convertedSanityProjects,
+      ...remainingLocalProjects,
+    ].slice(0, 3);
 
-      Homepage tetap hanya menampilkan 3.
-    */
-    return [...convertedSanityProjects, ...remainingLocalProjects].slice(0, 3);
+    console.log(
+      "FINAL HOMEPAGE PROJECTS:",
+      finalProjects.map((project) => ({
+        name: project.name,
+        link: project.studyCaseLink,
+      })),
+    );
+
+    return finalProjects;
   } catch (error) {
     console.error("Failed to fetch projects from Sanity:", error);
 
-    /*
-      Kalau Sanity error sekalipun,
-      homepage tetap hidup dengan data lokal.
-    */
     return localProjects.slice(0, 3);
   }
 }

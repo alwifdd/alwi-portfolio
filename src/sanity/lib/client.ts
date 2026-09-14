@@ -4,6 +4,6 @@ export const client = createClient({
   projectId: "tko911pw",
   dataset: "production",
   apiVersion: "2026-08-24",
-  useCdn: true,
+  useCdn: false,
   perspective: "published",
 });
