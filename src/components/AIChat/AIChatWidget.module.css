@@ -677,6 +677,22 @@
 
   background: #0a84ff;
   color: #ffffff;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.chatContent {
+  flex: 1;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding: 20px 16px 18px;
+
+  background: #ffffff;
+
+  scrollbar-width: thin;
 }
 
 /* =========================
