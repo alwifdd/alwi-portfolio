@@ -318,6 +318,20 @@
   transform: scale(1.05);
 }
 
+.messageLink {
+  color: #007aff;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.messageLink:hover {
+  opacity: 0.7;
+}
+
 /* =========================
    CHAT CONTENT
 ========================= */

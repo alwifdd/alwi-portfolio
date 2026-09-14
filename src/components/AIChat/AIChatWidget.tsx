@@ -32,6 +32,41 @@ const shortcuts = [
   },
 ];
 
+function renderMessageContent(content: string) {
+  const cleanedContent = content.replace(/\*\*/g, "");
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+
+  return cleanedContent.split("\n").map((line, lineIndex) => {
+    const parts = line.split(urlRegex);
+
+    return (
+      <p key={lineIndex}>
+        {parts.map((part, partIndex) => {
+          if (part.match(urlRegex)) {
+            const cleanUrl = part.replace(/[.,!?;:]+$/, "");
+
+            return (
+              <a
+                key={`${lineIndex}-${partIndex}`}
+                href={cleanUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.messageLink}
+              >
+                {cleanUrl}
+              </a>
+            );
+          }
+
+          return <span key={`${lineIndex}-${partIndex}`}>{part}</span>;
+        })}
+
+        {!line && "\u00A0"}
+      </p>
+    );
+  });
+}
+
 export default function AIChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
@@ -237,9 +272,7 @@ export default function AIChatWidget() {
 
               <div className={styles.messageGroup}>
                 <div className={styles.bubble}>
-                  {message.content.split("\n").map((line, lineIndex) => (
-                    <p key={lineIndex}>{line || "\u00A0"}</p>
-                  ))}
+                  {renderMessageContent(message.content)}
                 </div>
               </div>
             </div>
