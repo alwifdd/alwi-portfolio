@@ -1,5 +1,3 @@
-import RecentWorkSectionClient from "./RecentWorkSectionClient";
-
 import { unstable_noStore as noStore } from "next/cache";
 
 import { client } from "@/sanity/lib/client";
@@ -7,6 +5,7 @@ import { featuredProjectsQuery } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 
 import { projects as localProjects, type ProjectItem } from "../data/projects";
+import RecentWorkSectionClient from "./RecentWorkSectionClient";
 
 interface SanityProject {
   _id: string;

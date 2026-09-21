@@ -1,9 +1,14 @@
 import HeroSection from "../../components/HeroSection";
 import RecentWorkSection from "../../components/RecentWorkSection";
-import CertificateSection from "../../components/CertificateSection";
 import ExperienceSection from "../../components/ExperienceSection";
+import ArticlesSection, {
+  type Article,
+} from "../../components/ArticlesSection";
+import CertificateSection from "../../components/CertificateSection";
 import DocumentationSection from "../../components/DocumentationSection";
 import AIChatWidget from "../../components/AIChat/AIChatWidget";
+
+import { client } from "../../sanity/lib/client";
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -43,7 +48,24 @@ const structuredData = {
   ],
 };
 
-export default function Home() {
+export default async function Home() {
+  const articles = await client.fetch<Article[]>(
+    `*[
+      _type == "article" &&
+      visible == true
+    ] | order(publishedAt desc) {
+      _id,
+      title,
+      description,
+      publishedAt,
+      readTime,
+      mediumUrl,
+      category,
+      "thumbnailUrl": thumbnail.asset->url,
+      "thumbnailAlt": thumbnail.alt
+    }`
+  );
+
   return (
     <>
       <script
@@ -58,6 +80,8 @@ export default function Home() {
       <RecentWorkSection />
 
       <ExperienceSection />
+
+      <ArticlesSection articles={articles} />
 
       <CertificateSection />
 

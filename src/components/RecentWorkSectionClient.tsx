@@ -11,8 +11,6 @@ import "slick-carousel/slick/slick-theme.css";
 import styles from "../styles/RecentWorkSection.module.css";
 import type { ProjectItem } from "../data/projects";
 
-import RecentWorkCursor from "./RecentWorkCursor";
-
 interface RecentWorkSectionClientProps {
   projects: ProjectItem[];
 }
@@ -37,12 +35,6 @@ const RecentWorkSectionClient: React.FC<RecentWorkSectionClientProps> = ({
 
   return (
     <section id="selected-work" className={styles.recentWorkSection}>
-      {/* ============================================ */}
-      {/* PLAYFUL CURSOR — ACTIVE ON ENTIRE SECTION   */}
-      {/* ============================================ */}
-
-      <RecentWorkCursor />
-
       <div className="container">
         {/* ========================================== */}
         {/* SECTION TITLE                              */}
