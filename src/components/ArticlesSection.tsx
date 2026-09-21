@@ -88,11 +88,11 @@ const ArticlesSection: React.FC<ArticlesSectionProps> = ({ articles }) => {
     <section className={styles.section}>
       <div className={styles.container}>
         <div className={styles.heading}>
-          <h2 className={styles.title}>What I Read &amp; Learn</h2>
+          <h2 className={styles.title}>What I Read &amp; Write</h2>
 
           <p className={styles.subtitle}>
-            Things I&apos;ve been reading, exploring, and learning along the
-            way.
+            Things I&apos;ve been reading, exploring, writing and learning
+            along the way.
           </p>
         </div>
 
@@ -125,15 +125,14 @@ const ArticlesSection: React.FC<ArticlesSectionProps> = ({ articles }) => {
 
                   <div className={styles.glass}>
                     {article.readTime && (
-                       <div className={styles.meta}>
-      <span>{article.readTime}</span>
-    </div>
-  )}
+                      <div className={styles.meta}>
+                        <span>{article.readTime}</span>
+                      </div>
+                    )}
 
-  <h3 className={styles.cardTitle}>{article.title}</h3>
-                    
-
-                    <h3 className={styles.cardTitle}>{article.title}</h3>
+                    <h3 className={styles.cardTitle}>
+                      {article.title}
+                    </h3>
                   </div>
                 </div>
 
