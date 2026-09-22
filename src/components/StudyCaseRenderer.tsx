@@ -82,6 +82,19 @@ interface YouTubeVideoBlock extends TypedObject {
   layout?: "content" | "wide";
 }
 
+/* ================================================= */
+/* QA DOCUMENTATION                                  */
+/* ================================================= */
+
+interface QADocumentationBlock extends TypedObject {
+  _type: "qaDocumentation";
+  title?: string;
+  previewImage?: unknown;
+  spreadsheetUrl?: string;
+  caption?: string;
+  layout?: "content" | "wide" | "full";
+}
+
 interface HighlightBlock extends TypedObject {
   _type: "highlight";
   label?: string;
@@ -106,6 +119,7 @@ export type StudyCaseBlock =
   | TwoColumnBlock
   | GalleryBlock
   | YouTubeVideoBlock
+  | QADocumentationBlock
   | HighlightBlock
   | SpacerBlock;
 
@@ -441,7 +455,9 @@ const components: PortableTextComponents = {
       }
 
       const layoutClass =
-        block.layout === "content" ? styles.youtubeContent : styles.youtubeWide;
+        block.layout === "content"
+          ? styles.youtubeContent
+          : styles.youtubeWide;
 
       return (
         <section className={`${styles.youtubeSection} ${layoutClass}`}>
@@ -467,6 +483,66 @@ const components: PortableTextComponents = {
     },
 
     /* ================================================= */
+    /* QA DOCUMENTATION                                  */
+    /* ================================================= */
+
+    qaDocumentation: ({ value }) => {
+      const block = value as QADocumentationBlock;
+
+      if (!block.previewImage || !block.spreadsheetUrl) {
+        return null;
+      }
+
+      const imageUrl = urlFor(block.previewImage)
+        .width(2200)
+        .quality(90)
+        .url();
+
+      const layoutClass =
+        block.layout === "full"
+          ? styles.qaFull
+          : block.layout === "content"
+            ? styles.qaContent
+            : styles.qaWide;
+
+      const previewImage = block.previewImage as {
+        alt?: string;
+      };
+
+      return (
+        <section className={`${styles.qaSection} ${layoutClass}`}>
+          {block.title && (
+            <h3 className={styles.qaTitle}>{block.title}</h3>
+          )}
+
+          <a
+            href={block.spreadsheetUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.qaPreviewLink}
+            aria-label={`Open ${block.title || "QA documentation"} spreadsheet`}
+          >
+            <Image
+              src={imageUrl}
+              alt={previewImage.alt || block.title || "QA documentation"}
+              width={2200}
+              height={1250}
+              className={styles.qaPreviewImage}
+            />
+
+            <span className={styles.qaOverlay}>
+              View Full QA Documentation ↗
+            </span>
+          </a>
+
+          {block.caption && (
+            <p className={styles.qaCaption}>{block.caption}</p>
+          )}
+        </section>
+      );
+    },
+
+    /* ================================================= */
     /* HIGHLIGHT                                         */
     /* ================================================= */
 
@@ -478,7 +554,6 @@ const components: PortableTextComponents = {
           className={styles.highlight}
           style={{
             backgroundColor: block.backgroundColor || "#4E8DF7",
-
             color: block.textColor || "#FFFFFF",
           }}
         >

@@ -17,10 +17,7 @@ const HeroSection: React.FC = () => {
         </h1>
 
         <p className={styles.heroDescription}>
-          I&apos;m an Information Systems graduate who enjoys building,
-          testing, and improving digital products. I work across QA, UI/UX,
-          data, and web development, with a focus on creating useful and
-          user-friendly experiences.
+          I&apos;m an Information Systems graduate who loves making sure digital products actually work the way they should. I focus on Quality Assurance. Testing, hunting bugs, and making sure every feature is solid before it reaches users. :P
         </p>
 
         <p className={styles.heroMicrocopy}>

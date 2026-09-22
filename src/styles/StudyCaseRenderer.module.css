@@ -403,3 +403,274 @@
 
   text-align: center;
 }
+/* ================================================= */
+/* QA DOCUMENTATION                                  */
+/* ================================================= */
+
+.qaSection {
+  margin-top: 90px;
+  margin-bottom: 90px;
+}
+
+/* Card sedang — tidak memenuhi layar */
+.qaWide {
+  width: min(1000px, calc(100vw - 80px));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.qaContent {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.qaFull {
+  width: min(1200px, calc(100vw - 60px));
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.qaTitle {
+  margin: 0 0 24px;
+
+  color: #222;
+
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  font-weight: 600;
+
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+
+/* ================================================= */
+/* PREVIEW CARD                                      */
+/* ================================================= */
+
+.qaPreviewLink {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+  aspect-ratio: 16 / 8.5;
+
+  overflow: hidden;
+
+  border: 1px solid #e5e9ef;
+  border-radius: 24px;
+
+  background: #f3f5f8;
+
+  box-shadow:
+    0 20px 50px rgba(20, 30, 45, 0.08),
+    0 5px 18px rgba(20, 30, 45, 0.04);
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  isolation: isolate;
+}
+
+
+/* ================================================= */
+/* SPREADSHEET IMAGE                                 */
+/* ================================================= */
+
+.qaPreviewImage {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: top center;
+
+  /* Jangan blur gambar */
+  filter: none;
+
+  transform: scale(1.01);
+
+  transition: transform 0.35s ease;
+}
+
+
+/* ================================================= */
+/* GRADIENT                                           */
+/* ================================================= */
+
+.qaPreviewLink::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  /*
+    Bagian atas tetap jelas.
+    Blur/dark feeling hanya muncul
+    semakin ke bagian bawah.
+  */
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(20, 25, 35, 0) 30%,
+      rgba(20, 25, 35, 0.02) 43%,
+      rgba(20, 25, 35, 0.10) 56%,
+      rgba(20, 25, 35, 0.28) 68%,
+      rgba(20, 25, 35, 0.48) 82%,
+      rgba(20, 25, 35, 0.60) 100%
+    );
+}
+
+
+/* ================================================= */
+/* GLASS CTA                                          */
+/* ================================================= */
+
+.qaOverlay {
+  position: absolute;
+
+  left: 50%;
+  bottom: 28px;
+
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transform: translateX(-50%);
+
+  padding: 12px 21px;
+
+  min-width: 245px;
+
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+
+  /*
+    Glass, bukan kotak hitam.
+  */
+  background: rgba(255, 255, 255, 0.16);
+
+  color: #ffffff;
+
+  font-size: 0.88rem;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 10px 30px rgba(10, 20, 35, 0.16);
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* ================================================= */
+/* HOVER                                              */
+/* ================================================= */
+
+.qaPreviewLink:hover .qaPreviewImage {
+  transform: scale(1.025);
+}
+
+.qaPreviewLink:hover .qaOverlay {
+  background: rgba(255, 255, 255, 0.22);
+
+  transform: translateX(-50%) translateY(-2px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 14px 35px rgba(10, 20, 35, 0.2);
+}
+
+
+/* ================================================= */
+/* CAPTION                                            */
+/* ================================================= */
+
+.qaCaption {
+  max-width: 680px;
+
+  margin: 14px auto 0;
+
+  color: #8a8f98;
+
+  font-size: 0.88rem;
+
+  line-height: 1.6;
+
+  text-align: center;
+}
+
+
+/* ================================================= */
+/* MOBILE                                             */
+/* ================================================= */
+
+@media (max-width: 768px) {
+  .qaSection {
+    margin-top: 70px;
+    margin-bottom: 70px;
+  }
+
+  .qaWide,
+  .qaContent {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .qaFull {
+    width: 100%;
+
+    margin-left: 0;
+
+    transform: none;
+  }
+
+  .qaTitle {
+    margin-bottom: 20px;
+
+    font-size: 1.6rem;
+  }
+
+  .qaPreviewLink {
+    aspect-ratio: 16 / 9;
+
+    border-radius: 18px;
+  }
+
+  .qaPreviewImage {
+    transform: scale(1.01);
+  }
+
+  .qaOverlay {
+    bottom: 16px;
+
+    min-width: auto;
+
+    padding: 9px 15px;
+
+    font-size: 0.76rem;
+  }
+
+  .qaCaption {
+    margin-top: 12px;
+
+    font-size: 0.82rem;
+  }
+}
