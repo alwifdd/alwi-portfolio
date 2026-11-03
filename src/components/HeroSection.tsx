@@ -4,13 +4,13 @@ import React from "react";
 import { FiArrowDown } from "react-icons/fi";
 
 import styles from "../styles/HeroSection.module.css";
-import StatusIndicator from "./StatusIndicator";
+//import StatusIndicator from "./StatusIndicator";
 
 const HeroSection: React.FC = () => {
   return (
     <section className={styles.heroSection}>
       <div className={styles.heroContent}>
-        <StatusIndicator text="Available For Works" isAvailable={true} />
+       {/* <StatusIndicator text="Available For Works" isAvailable={true} /> */}
 
         <h1 className={styles.heroTitle}>
           Hello I&apos;m <span className={styles.alwiText}>Alwi</span>
