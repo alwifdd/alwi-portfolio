@@ -1,3 +1,4 @@
+
 /* src/styles/StatusIndicator.module.css */
 
 .statusBox {
@@ -17,46 +18,24 @@
 .statusDot {
   width: 10px;
   height: 10px;
-  /* Ubah warna hijau di sini */
-  background-color: #81c784; /* Hijau yang lebih kalem (Light Green 300) */
-  /* Beberapa alternatif warna hijau kalem yang cerah:
-     #A5D6A7 (Light Green 200)
-     #4CAF50 (Green 500, hijau standar tapi cerah)
-     #66BB6A (Green 400)
-     #AED581 (Lime Green 300)
-  */
+  background-color: #81c784;
   border-radius: 50%;
   margin-right: 8px;
-  animation: softBlink 2s infinite alternate;
-}
-
-/* Definisi animasi keyframes untuk efek kedip */
-@keyframes softBlink {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.3;
-  }
-  100% {
-    opacity: 1;
-  }
+  flex-shrink: 0;
 }
 
 .statusText {
-  color: #00838f; /* Pastikan warna teks juga sesuai */
+  color: #00838f;
 }
 
 @media (max-width: 768px) {
   .statusBox {
-    /* Perkecil padding & font */
     padding: 5px 10px;
     font-size: 0.8em;
-    margin-bottom: 24px; /* Kurangi juga jarak ke judul */
+    margin-bottom: 24px;
   }
 
   .statusDot {
-    /* Perkecil juga ukuran titik hijaunya */
     width: 8px;
     height: 8px;
     margin-right: 6px;
